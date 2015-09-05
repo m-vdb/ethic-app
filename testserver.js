@@ -10,4 +10,6 @@ http.createServer(function (request, response) {
         // serve files
         file.serve(request, response);
     }).resume();
-}).listen(PORT);
+}).listen(PORT, function(){
+    console.log("Server listening on: http://localhost:%s", PORT);
+});
