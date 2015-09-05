@@ -7,5 +7,6 @@ Frontend code for Ethic.
 You should have node installed. You can use [nvm](https://github.com/creationix/nvm).
 Then you can do the following:
 ```bash
+$ npm install -g gulp bower
 $ npm install .
 ```
