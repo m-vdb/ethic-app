@@ -1,0 +1,7 @@
+{
+  "name": "ethic-app",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.5"
+  }
+}
