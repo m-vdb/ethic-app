@@ -1,8 +1,9 @@
-var browserify = require('gulp-browserify');
-var gulp = require('gulp');
-var rename = require("gulp-rename");
-var partialify = require('partialify');
-var debowerify = require('debowerify');
+var gulp = require('gulp'),
+    watch = require('gulp-watch'),
+    rename = require("gulp-rename"),
+    browserify = require('gulp-browserify'),
+    partialify = require('partialify'),
+    debowerify = require('debowerify');
 
 
 gulp.task('build', function() {
@@ -19,4 +20,12 @@ gulp.task('build', function() {
     // Output to the build directory
     .pipe(rename('main.js'))
     .pipe(gulp.dest('./build/'));
+});
+
+
+gulp.task('watch', function () {
+  gulp.start('build');
+  watch('ethic/**/*.js', function () {
+    gulp.start('build');
+  });
 });
