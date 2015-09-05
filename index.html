@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="ethicApp">
+  <head>
+    <title>Ethic</title>
+    <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <ng-view onload="dashboard">
+      <div ng-controller="dashboard"></div>
+    </ng-view>
+    <script src="./build/main.js"></script>
+  </body>
+</html>
