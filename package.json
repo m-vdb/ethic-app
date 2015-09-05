@@ -3,11 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "description": "Frontend code for Ethic",
-    "dependencies": {
-    "gulp": "^3.9.0",
+  "dependencies": {
     "bower": "^1.5.2",
     "browserify": "^11.0.1",
-    "gulp-browserify": "^0.5.0"
+    "debowerify": "^1.3.1",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-rename": "^1.2.2",
+    "partialify": "^3.1.5"
+  },
+  "devDependencies": {
+    "node-static": "^0.7.7"
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
