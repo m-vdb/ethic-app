@@ -1,0 +1,148 @@
+<link rel="stylesheet" href="bootstrap.css">
+
+<div class="container" ng-controller = "storage">
+  
+  <div class="row">
+    
+  
+  <!-- info about the member's user/policies     (1)     -->
+    <div class="col-md-4">      
+      <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Personal information
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+            <h5>My address: <strong id="logged_address"></strong></h5>    
+            <h5>Joining date: <strong id="joining_date"></strong></h5>
+            
+            <h5>Registered policies: <strong id="Contracts_listed"></strong></h5>   
+            <br>
+            <ul>
+              <li ng-repeat = "Policy in policies"> {{Policy.model}} - {{Policy.date}} </li> {{ tttt }}
+            </ul>
+            <br>        
+            <input type="button" class="btn btn-primary" value="Register policy" ng-click="go('/register_policy')">
+            </div>
+      </div>
+    </div>
+
+    
+
+
+    <div class="col-md-4">
+
+  <!-- info about the member's balance / payments          (2)      -->
+      <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Payment
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+            <h5>You owe:  {{Policy.amount_owed}} </h5>
+            <h5>Time left:  {{Policy.time_left_to_pay}} </h5> 
+              <br>
+            <button type="button" class="btn btn-success" onclick= "location.href='payment_view.html'">Pay now</button>
+            </div>
+  
+      </div>
+    </div>
+
+
+
+    <div class="col-md-4">
+      
+
+  <!-- Their will be a personal calculator of savings, not yet    (3)  -->
+
+      <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Personal dashboard
+                        </div>
+        
+                        <div class="panel-body">
+      
+              <h5>personal calculator </h5>    
+              <h5>personal calculator </h5>    
+              <h5>personal calculator </h5>    
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+<div class="container" ng-controller = "storage">
+  <div class="row">
+      <div class="col-md-4">       
+      <!-- button to get on the page of filing a claim on the file_claim.html page    (4)  -->
+          <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Claims
+                        </div>
+                        <div class="panel-body">
+              
+              <h5>legacy of claims</h5>
+            <br>
+            <input type="button" class="btn btn-primary" value="File a claim" ng-click="go('/file_claim')">
+        
+            </div>
+        </div>
+      </div>
+
+    
+    
+
+    <div class="col-md-4">
+             <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Admission
+                        </div>
+                        
+                        <div class="panel-body">
+              <h5>Recommend somebody: <strong id="validation_requests"></strong></h5>
+              <!-- this is out shh_watch thing with the link to the place he can find the data -->
+            </div>
+          </div>
+    </div>
+              
+              
+
+<!-- info about the community        (6)     -->
+  
+    <div class="col-md-4">  
+      <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Ethic Network
+                        </div>
+                        
+                        <div class="panel-body">
+              <h5>Ethic members: <strong id="number_of_members"></strong></h5>    
+              <h5>Ethic policies: <strong id="number_claims_handled"></strong></h5>
+              <h5>Number of claims: <strong id="number_policies"></strong></h5>
+            </div>
+      </div>
+    </div>
+  
+    
+    
+
+    <div class="container">
+       <div class="row" align="center">
+        <br>
+        <!-- button to get on the page of rules explanation, will become a popup  -->
+        <button type="button" class="btn btn-info" onclick= "location.href='community_rules.html'">Rules & terms</button>
+        <!-- button to get on the page of FAQs, will become a popup  -->
+        <button type="button" class="btn btn-info" onclick= "location.href='community_rules.html'">FAQ</button>
+         <br>
+      </div>
+    </div>
+    
+</div>
+
+<br>
