@@ -8,7 +8,7 @@ module.exports = ['CONTRACT_ADDRESS', function (CONTRACT_ADDRESS) {
 
   if (window.web3) {
     // TODO
-    var contractString = web3.eth.storageAt(CONTRACT_ADDRESS, 0);
+    var contractString = web3.eth.getStorageAt(CONTRACT_ADDRESS, 0);
     return contractString.profiles['logged_address'];
   }
   else {  // TODO: if env = dev?

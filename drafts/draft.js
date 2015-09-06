@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute']);   // creates a module
-  //  var contractString = web3.eth.storageAt(contract_address, 0);     // look at the format of extracted data, string or what
-  //  var contractString = web3.eth.storageAt(contract_address, 2);     // info about the user and info about the community will be at two different places
+  //  var contractString = web3.eth.getStorageAt(contract_address, 0);     // look at the format of extracted data, string or what
+  //  var contractString = web3.eth.getStorageAt(contract_address, 2);     // info about the user and info about the community will be at two different places
   // // what we don't need we should suppress from the contract's storage
 
 
