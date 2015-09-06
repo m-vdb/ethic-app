@@ -9,13 +9,13 @@
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-          <h5>My address: <strong id="logged_address"></strong></h5>
-          <h5>Joining date: <strong id="joining_date"></strong></h5>
+          <h5>My address: <strong>???</strong></h5>
+          <h5>Joining date: <strong>{{ user.joining_date }}</strong></h5>
 
-          <h5>Registered policies: <strong id="Contracts_listed"></strong></h5>
+          <h5>Registered policies: <strong>{{ user.num_policies }}</strong></h5>
           <br>
           <ul>
-            <li ng-repeat = "Policy in policies"> {{Policy.model}} - {{Policy.date}} </li> {{ tttt }}
+            <li ng-repeat = "policy in user.member_policies"> {{policy.model}} - {{policy.date}} </li>
           </ul>
           <br>
           <input type="button" class="btn btn-primary" value="Register policy" ng-click="go('/register_policy')">
@@ -31,8 +31,8 @@
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-          <h5>You owe:  {{Policy.amount_owed}} </h5>
-          <h5>Time left:  {{Policy.time_left_to_pay}} </h5>
+          <h5>You owe:  {{ user.amount_owed }} </h5>
+          <h5>Time left:  {{ user.time_left_to_pay }} </h5>
           <br>
           <button type="button" class="btn btn-success" onclick= "location.href='payment_view.html'">Pay now</button>
         </div>
@@ -96,9 +96,9 @@
         </div>
 
         <div class="panel-body">
-          <h5>Ethic members: <strong id="number_of_members"></strong></h5>
-          <h5>Ethic policies: <strong id="number_claims_handled"></strong></h5>
-          <h5>Number of claims: <strong id="number_policies"></strong></h5>
+          <h5>Ethic members: <strong>{{ network.number_of_members }}</strong></h5>
+          <h5>Ethic policies: <strong>{{ network.number_claims_handled }}</strong></h5>
+          <h5>Number of claims: <strong>{{ network.number_policies }}</strong></h5>
         </div>
       </div>
     </div>
