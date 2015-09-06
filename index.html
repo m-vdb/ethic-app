@@ -6,6 +6,9 @@
   </head>
 
   <body>
+    <div ng-controller="menu">
+      <div ng-bind-html="menuBar"></div>
+    </div>
     <ng-view onload="dashboard">
       <div ng-controller="dashboard"></div>
     </ng-view>
