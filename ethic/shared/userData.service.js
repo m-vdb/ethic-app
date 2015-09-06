@@ -1,4 +1,5 @@
 var chance = require('chance')();
+var moment = require('moment');
 
 module.exports = ['CONTRACT_ADDRESS', function (CONTRACT_ADDRESS) {
   // FIXME
@@ -14,14 +15,14 @@ module.exports = ['CONTRACT_ADDRESS', function (CONTRACT_ADDRESS) {
   else {  // TODO: if env = dev?
     var num_policies = chance.integer({min: 1, max: 5});
     return {
-      joining_date: chance.timestamp(),
+      joining_date: moment.unix(chance.timestamp()).format('MMMM Do YYYY'),
       amount_owed: chance.integer({min: 0}),
       time_left_to_pay: chance.integer({min: 0, max: 30}),
       num_policies: chance.integer({min: 1, max: 5}),
       member_policies: chance.n(function () {
         return {
           model: chance.pick(['Prius', 'Camaro', 'Fixie']),
-          date: chance.timestamp()
+          date: moment.unix(chance.timestamp()).format('MMMM Do YYYY')
         };
       }, num_policies)
     };
