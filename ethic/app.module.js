@@ -6,16 +6,13 @@ require("angular-route");
 
 var ethicApp = angular.module('ethicApp', ['ngRoute']);
 
+ethicApp.constant('CONTRACT_ADDRESS', '0x0000');  // TODO: the address
 ethicApp.config(require('./app.routes.js'));
+
+// services
+ethicApp.factory('userData', require('./shared/userData.service.js'));
+ethicApp.factory('networkData', require('./shared/networkData.service.js'));
+
 // controllers
 ethicApp.controller('dashboard', require('./components/dashboard/dashboard.controller.js'));
 ethicApp.controller('menu', require('./components/menu/menu.controller.js'));
-
-
-/* TODO
-
--> use http://chancejs.com/ to generate random information
--> use different services that retrieves data from API
--> have a switch in those services to retrieve data from web3
--> menu bar
-*/
