@@ -6,6 +6,7 @@
     "angular-route": "^1.4.5",
     "bootstrap": "^3.3.5",
     "chance": "^0.7.7",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6"
   }
 }
