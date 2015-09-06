@@ -18,7 +18,7 @@ module.exports = ['CONTRACT_ADDRESS', function (CONTRACT_ADDRESS) {
       joining_date: moment.unix(chance.timestamp()).format('MMMM Do YYYY'),
       amount_owed: chance.integer({min: 0}),
       time_left_to_pay: chance.integer({min: 0, max: 30}),
-      num_policies: chance.integer({min: 1, max: 5}),
+      num_policies: num_policies,
       member_policies: chance.n(function () {
         return {
           model: chance.pick(['Prius', 'Camaro', 'Fixie']),
