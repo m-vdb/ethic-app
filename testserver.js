@@ -1,6 +1,6 @@
 var http = require('http'),
     static = require('node-static');
-const PORT = 8080;
+const PORT = 1337;
 
 // we want to server everything
 var file = new static.Server('.');
