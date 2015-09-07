@@ -32,36 +32,6 @@ var myApp = angular.module('myApp', ['ngRoute']);   // creates a module
 
 
 
-    myApp.controller('register_policy', function($scope, $location){
-  /*
-      $scope.car_year = null;       // initialization, maybe not necessary
-      $scope.car_model = null;
-      $scope.initial_premium = null;
-      $scope.initial deductible = null;
-      // $scope.policy_type = null;
-
-      $scope.register_policy = function(){
-        var car_year = $scope.car_year;
-        var car_model = $scope.car_model;
-        var initial_premium = $scope.initial_premium;
-        var initial_deductible = $scope.initial;
-        // var policy_type = $scope.policy_type;    depending on the policy type, we might have to send the transacton to a different contract if we want one contract per policy type, see with storage capabilities
-        web3.eth.sendTransaction({to: contract_address, data:
-        ABI_4bytes_function_add_policy,
-        car_year,
-        car_model,
-        initial_premium,
-        initial_deductible,
-        function(err, address) {
-            if (!err)
-            console.log(address); // "0x7f9fade1c0d57a7af66ab4ead7c2eb7b11a91385"
-          };
-        });
-      }
-  */  });
-
-
-
     myApp.controller('auditor_backoffice', function($scope, $location){   // function called by the auditor peer from his backoffice
   /*
       $scope.claim_id = null;
