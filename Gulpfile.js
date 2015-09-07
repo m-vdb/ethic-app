@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 gulp.task('build', function() {
 
-  gulp.src(['./ethic/app.module.js'], {read: false})
+  gulp.src(['./ethic/app.module.coffee'], {read: false})
 
     // Browserify, and add source maps if this isn't a production build
     .pipe(browserify({
