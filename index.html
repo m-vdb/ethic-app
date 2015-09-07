@@ -9,9 +9,10 @@
     <div ng-controller="menu">
       <div ng-bind-html="menuBar"></div>
     </div>
-    <ng-view onload="dashboard">
-      <div ng-controller="dashboard"></div>
-    </ng-view>
+    <!-- the views -->
+    <ng-view onload="dashboard"></ng-view>
+
+    <!-- the scripts -->
     <script src="./build/main.js"></script>
   </body>
 </html>
