@@ -17,3 +17,4 @@ ethicApp.factory 'networkData', require('./shared/networkData.service.coffee')
 # controllers
 ethicApp.controller 'dashboard', require('./components/dashboard/dashboard.controller.coffee')
 ethicApp.controller 'menu', require('./components/menu/menu.controller.coffee')
+ethicApp.controller 'register-policy', require('./components/policies/register.controller.coffee')
