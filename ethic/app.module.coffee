@@ -13,6 +13,7 @@ ethicApp.config require('./app.routes.coffee')
 # services
 ethicApp.factory 'userData', require('./shared/userData.service.coffee')
 ethicApp.factory 'networkData', require('./shared/networkData.service.coffee')
+ethicApp.factory 'carData', require('./shared/carData.service.coffee')
 
 # controllers
 ethicApp.controller 'dashboard', require('./components/dashboard/dashboard.controller.coffee')

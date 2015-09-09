@@ -1,8 +1,21 @@
 module.exports = [
-  '$scope', 'CONTRACT_ADDRESS',
-  ($scope, CONTRACT_ADDRESS) ->
+  '$scope', 'CONTRACT_ADDRESS', 'carData',
+  ($scope, CONTRACT_ADDRESS, carData) ->
     $scope.formData = {}
     $scope.policy = {}
+    $scope.showCarModelInput = false
+    $scope.carMakesOptions = carData.getMakes()
+    $scope.carModelsOptions = {}
+
+    $scope.onCarMakeChange = ->
+      if $scope.policy.car_make
+        $scope.showCarModelInput = true
+        $scope.carModelsOptions = carData.getModels($scope.policy.car_make)
+      else
+        $scope.carModelsOptions = {}
+        $scope.policy.car_model = ''
+        $scope.showCarModelInput = false
+
     # TODO: validation
     $scope.register_policy = ->
 
