@@ -2,11 +2,9 @@
   "name": "ethic-app",
   "private": true,
   "dependencies": {
-    "angular": "1.4.5",
-    "angular-route": "^1.4.5",
     "bootstrap": "^3.3.5",
     "chance": "^0.7.7",
-    "lodash": "^3.10.1",
+    "marionette": "^2.4.3",
     "moment": "^2.10.6"
   }
 }
