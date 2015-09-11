@@ -3,16 +3,18 @@
   <head>
     <title>Ethic</title>
     <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/simple-sidebar.css">
   </head>
 
   <body>
-    <div ng-controller="menu">
-      <div ng-bind-html="menuBar"></div>
-    </div>
-    <!-- the views -->
-    <ng-view onload="dashboard"></ng-view>
+    <div id="ethic-app"></div>
 
     <!-- the scripts -->
     <script src="./build/main.js"></script>
+    <script>
+    window.ethic.init({
+      container: "#ethic-app"
+    });
+    </script>
   </body>
 </html>
