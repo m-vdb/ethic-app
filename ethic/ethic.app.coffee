@@ -11,12 +11,13 @@ ClaimCollection = require './collections/claims.coffee'
 
 # models
 Policy = require './models/policy.coffee'
+Claim = require './models/claim.coffee'
 
 # views
 MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
 RegisterPolicyView = require './views/policies/register.view.coffee'
-ClaimsListView = require './views/claims/list.view.coffee'
+FileClaimView = require './views/claims/file.view.coffee'
 PaymentView = require './views/payment/payment.view.coffee'
 FAQView = require './views/faq/faq.view.coffee'
 TOSView = require './views/tos/tos.view.coffee'
@@ -70,8 +71,10 @@ class App
         model: new Policy()
         collection: @app.collections.policies
 
-    @app.vent.on 'routing:claims', =>
-      @app.layout.content.show new ClaimsListView()
+    @app.vent.on 'routing:fileClaim', =>
+      @app.layout.content.show new FileClaimView
+        model: new Claim()
+        collection: @app.collections.claims
 
     @app.vent.on 'routing:payment', =>
       @app.layout.content.show new PaymentView()

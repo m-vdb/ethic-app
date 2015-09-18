@@ -12,8 +12,8 @@ class Controller extends Backbone.Marionette.Controller
   onRegisterPolicy: ->
     @vent.trigger 'routing:registerPolicy'
 
-  onClaims: ->
-    @vent.trigger 'routing:claims'
+  onFileClaim: ->
+    @vent.trigger 'routing:fileClaim'
 
   onPayment: ->
     @vent.trigger 'routing:payment'

@@ -6,7 +6,7 @@ class Router extends Backbone.Marionette.AppRouter
   appRoutes:
     "": "onHome"
     "policies/register": "onRegisterPolicy"
-    "claims": "onClaims"
+    "claims/file": "onFileClaim"
     "payment": "onPayment"
     "faq": "onFAQ"
     "tos": "onTOS"
