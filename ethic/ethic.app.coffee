@@ -5,6 +5,10 @@ require 'marionette'
 Router = require './router.coffee'
 Controller = require './controller.coffee'
 
+# collections
+PolicyCollection = require './collections/policies.coffee'
+ClaimCollection = require './collections/claims.coffee'
+
 # views
 MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
@@ -34,6 +38,11 @@ class App
     @app.addInitializer ->
       @layout = new MainLayout()
       @main.show @layout
+
+    @app.addInitializer ->
+      @collections =
+        claims: new ClaimCollection()
+        policies: new PolicyCollection()
 
     @app.addInitializer _.bind(@routingViews, @)
 
