@@ -1,0 +1,18 @@
+[
+  {
+    "registered_date": "2015-01-09",
+    "id": "908975",
+    "car_year": "2002",
+    "car_make": "Chevrolet",
+    "car_model": "Corvette",
+    "state": "CA"
+  },
+  {
+    "registered_date": "2015-03-10",
+    "id": "59120",
+    "car_year": "2015",
+    "car_make": "Tesla",
+    "car_model": "Roadster",
+    "state": "CA"
+  }
+]

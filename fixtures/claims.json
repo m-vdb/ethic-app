@@ -1,0 +1,20 @@
+[
+  {
+    "filing_date": "2014-05-10",
+    "reason": "Because I got high",
+    "policy_id": "59120",
+    "amount": 777.77,
+    "awarded": false,
+    "agreed_amount": null,
+    "peer_reviewer": "John Doe"
+  },
+  {
+    "filing_date": "2014-06-09",
+    "reason": "Because they got high",
+    "policy_id": "908975",
+    "amount": 1337,
+    "awarded": true,
+    "agreed_amount": 937.50,
+    "peer_reviewer": "Arnold Schwarzy"
+  }
+]
