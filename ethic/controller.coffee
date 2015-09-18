@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class Controller extends Backbone.Marionette.Controller

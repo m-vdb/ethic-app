@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class FAQView extends Backbone.Marionette.ItemView

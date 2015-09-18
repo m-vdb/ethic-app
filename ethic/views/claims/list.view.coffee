@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class ClaimsListView extends Backbone.Marionette.ItemView

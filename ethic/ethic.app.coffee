@@ -1,6 +1,6 @@
 window._ = require 'underscore'
 window.Backbone = require 'backbone'
-require 'backbone.marionette'
+require 'marionette'
 
 Router = require './router.coffee'
 Controller = require './controller.coffee'

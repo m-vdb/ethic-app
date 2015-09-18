@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class RegisterPolicyView extends Backbone.Marionette.ItemView

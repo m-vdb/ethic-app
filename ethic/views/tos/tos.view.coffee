@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class TOSView extends Backbone.Marionette.ItemView

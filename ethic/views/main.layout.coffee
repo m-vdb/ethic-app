@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class MainLayout extends Backbone.Marionette.LayoutView

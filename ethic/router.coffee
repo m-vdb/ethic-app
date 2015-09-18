@@ -1,4 +1,4 @@
-require 'backbone.marionette'
+require 'marionette'
 
 
 class Router extends Backbone.Marionette.AppRouter
