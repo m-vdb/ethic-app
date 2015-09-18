@@ -1,3 +1,22 @@
 <li>
-  one claim
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Claim for policy <%= policy_id %> (<%= filing_date %>),
+      <strong>
+      <% if (awarded) { %>
+      awarded
+      <% } else { %>
+      not awarded
+      <% } %>
+      </strong>
+    </div>
+    <div class="panel-body">
+      <p><strong>Reason: </strong>"<%= reason %>"</p>
+      <p><strong>Amount claimed: </strong> $ <%= amount %></p>
+      <% if (awarded) { %>
+      <p><strong>Agreed amount: </strong> $ <%= agreed_amount %></p>
+      <% } %>
+      <p><strong>Peer reviewer: </strong> <%= peer_reviewer %></p>
+    </div>
+  </div>
 </li>
