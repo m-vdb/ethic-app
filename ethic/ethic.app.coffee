@@ -9,6 +9,9 @@ Controller = require './controller.coffee'
 PolicyCollection = require './collections/policies.coffee'
 ClaimCollection = require './collections/claims.coffee'
 
+# models
+Policy = require './models/policy.coffee'
+
 # views
 MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
@@ -63,7 +66,9 @@ class App
       @app.layout.content.show new HomeView()
 
     @app.vent.on 'routing:registerPolicy', =>
-      @app.layout.content.show new RegisterPolicyView()
+      @app.layout.content.show new RegisterPolicyView
+        model: new Policy()
+        collection: @app.collections.policies
 
     @app.vent.on 'routing:claims', =>
       @app.layout.content.show new ClaimsListView()
