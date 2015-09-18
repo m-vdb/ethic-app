@@ -16,6 +16,7 @@ Claim = require './models/claim.coffee'
 # views
 MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
+MenuView = require './views/menu/menu.view.coffee'
 PolicyListView = require './views/policies/list.view.coffee'
 RegisterPolicyView = require './views/policies/register.view.coffee'
 ClaimListView = require './views/claims/list.view.coffee'
@@ -42,8 +43,16 @@ class App
       main: options.container
 
     @app.addInitializer ->
+      @controller = new Controller
+        vent: @vent
+      @router = new Router
+          controller: @controller
+
+    @app.addInitializer ->
       @layout = new MainLayout()
       @main.show @layout
+      @layout.menu.show new MenuView
+        router: @router
 
     @app.addInitializer ->
       @collections =
@@ -55,12 +64,6 @@ class App
     @app.addInitializer ->
       @collections.claims.fetch()
       @collections.policies.fetch()
-
-    @app.addInitializer ->
-      @controller = new Controller
-        vent: @vent
-      @router = new Router
-          controller: @controller
 
     @app.addInitializer ->
       if window.Backbone.history
