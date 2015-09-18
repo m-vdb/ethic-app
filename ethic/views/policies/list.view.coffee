@@ -1,7 +1,7 @@
 require 'marionette'
 
 
-class PolicyListView extends Backbone.Marionette.CollectionView
+class PolicyListView extends Backbone.Marionette.CompositeView
 
   template: require './list.view.html'
   childView: require './item.view.coffee'
