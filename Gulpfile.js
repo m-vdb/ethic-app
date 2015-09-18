@@ -29,4 +29,7 @@ gulp.task('watch', function () {
   watch('ethic/**/*.coffee', function () {
     gulp.start('build');
   });
+  watch('ethic/**/*.html', function () {
+    gulp.start('build');
+  });
 });
