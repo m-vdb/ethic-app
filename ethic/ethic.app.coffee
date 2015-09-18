@@ -16,7 +16,9 @@ Claim = require './models/claim.coffee'
 # views
 MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
+PolicyListView = require './views/policies/list.view.coffee'
 RegisterPolicyView = require './views/policies/register.view.coffee'
+ClaimListView = require './views/claims/list.view.coffee'
 FileClaimView = require './views/claims/file.view.coffee'
 PaymentView = require './views/payment/payment.view.coffee'
 FAQView = require './views/faq/faq.view.coffee'
@@ -64,7 +66,12 @@ class App
 
   routingViews: ->
     @app.vent.on 'routing:home', =>
-      @app.layout.content.show new HomeView()
+      homeView = new HomeView()
+      @app.layout.content.show homeView
+      homeView.policies.show new PolicyListView
+        collection: @app.collections.policies
+      homeView.claims.show new ClaimListView
+        collection: @app.collections.claims
 
     @app.vent.on 'routing:registerPolicy', =>
       @app.layout.content.show new RegisterPolicyView

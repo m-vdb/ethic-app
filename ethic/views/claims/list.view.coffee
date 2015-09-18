@@ -1,9 +1,9 @@
 require 'marionette'
 
 
-class ClaimsListView extends Backbone.Marionette.ItemView
+class ClaimListView extends Backbone.Marionette.ItemView
 
   template: require './list.view.html'
 
 
-module.exports = ClaimsListView
+module.exports = ClaimListView
