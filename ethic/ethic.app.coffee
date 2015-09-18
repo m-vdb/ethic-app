@@ -53,6 +53,10 @@ class App
     @app.addInitializer _.bind(@routingViews, @)
 
     @app.addInitializer ->
+      @collections.claims.fetch()
+      @collections.policies.fetch()
+
+    @app.addInitializer ->
       @controller = new Controller
         vent: @vent
       @router = new Router

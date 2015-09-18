@@ -5,5 +5,7 @@ class PolicyCollection extends Backbone.Collection
 
   model: Policy
 
+  fetch: ->
+    true
 
 module.exports = PolicyCollection
