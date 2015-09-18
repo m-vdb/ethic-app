@@ -66,6 +66,12 @@ class App
       if window.Backbone.history
         window.Backbone.history.start()
 
+    # debugging purposes
+    @app.addInitializer ->
+      if location.search.indexOf('fixtures') != -1
+        @collections.policies.add require('../fixtures/policies.json')
+        @collections.claims.add require('../fixtures/claims.json')
+
     @app.start options
 
   routingViews: ->
