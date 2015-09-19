@@ -16,6 +16,9 @@ gulp.task('build', function() {
       debug: true,
       transform: [coffeeify, partialify, debowerify],
       extensions: ['.js', '.coffee', '.html']
+    }).on('error', function(err){
+      console.log(err.message);
+      this.end();
     }))
 
     // Output to the build directory
