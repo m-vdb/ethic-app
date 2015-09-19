@@ -29,5 +29,4 @@ class Policy extends Backbone.Model
       pattern: 'number'
 
 
-_.extend Policy::, Backbone.Validation.mixin
 module.exports = Policy

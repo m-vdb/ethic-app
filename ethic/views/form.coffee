@@ -9,10 +9,6 @@ class Form extends Backbone.Marionette.ItemView
 
   formEvents:
     'click @ui.submit': 'onSubmit'
-    'change @ui.formControls': 'resetInvalidState'
-
-  modelEvents:
-    'invalid': 'onInvalid'
 
   events: {}
   ui: {}
@@ -30,15 +26,23 @@ class Form extends Backbone.Marionette.ItemView
       $el = @$(el)
       data[$el.attr 'name'] = $el.val()
 
-    @model.set data
-    if @model.isValid(true)
+    @model.set data, validate: true
+    if @model.isValid()
       @collection.create @model
 
-  onInvalid: (model, error) ->
-    # TODO: mark form controls as invalid
-    console.log error
+  onRender: ->
+    Backbone.Validation.bind @,
+      valid: (view, attr) ->
+        formGroup = view.$('[name="'+attr+'"]').parents('.form-group')
+        formGroup.removeClass 'has-error'
+        formGroup.addClass 'has-success'
+        formGroup.children('.form-error-msg').html ''
 
-  resetInvalidState: (e) ->
-    # TODO: reset invalid state
+      invalid: (view, attr, error) ->
+        formGroup = view.$('[name="'+attr+'"]').parents('.form-group')
+        formGroup.removeClass 'has-success'
+        formGroup.addClass 'has-error'
+        formGroup.children('.form-error-msg').html error
+
 
 module.exports = Form
