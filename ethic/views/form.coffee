@@ -31,7 +31,7 @@ class Form extends Backbone.Marionette.ItemView
       data[$el.attr 'name'] = $el.val()
 
     @model.set data
-    if @model.isValid()
+    if @model.isValid(true)
       @collection.create @model
 
   onInvalid: (model, error) ->
