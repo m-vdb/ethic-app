@@ -94,9 +94,11 @@ class App
         collection: @app.collections.policies
 
     @app.vent.on 'routing:fileClaim', =>
+      # TODO: relies on polcicy collection content
       @app.layout.content.show new FileClaimView
         model: new Claim()
         collection: @app.collections.claims
+        policiesCollection: @app.collections.policies
 
     @app.vent.on 'routing:payment', =>
       @app.layout.content.show new PaymentView()
