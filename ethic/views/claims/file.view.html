@@ -4,16 +4,20 @@
     <div class="col-md-offset-3 col-md-6">
       <form class="form form-horizontal">
         <div class="form-group">
-        <label for="amount" class="col-sm-4">Amount</label>
+          <label for="amount" class="col-sm-4">Amount</label>
           <div class="col-sm-4">
-            <input type="number" id="amount" class="form-control" name="amount">
+            <input type="number" id="amount" class="form-control" name="amount" placeholder="250.35">
           </div>
+          <p class="form-error-msg text-danger"></p>
         </div>
         <div class="form-group">
           <label for="reason" class="col-sm-4">Reason</label>
           <div class="col-sm-6">
-            <textarea id="reason" class="form-control" name="reason" rows="8"></textarea>
+            <textarea id="reason" class="form-control" name="reason" rows="8">Please
+            explain the reason of your claim (minimum 100 characters).
+            </textarea>
           </div>
+          <p class="form-error-msg text-danger"></p>
         </div>
         <div class="form-group">
           <div class="col-sm-4 col-sm-offset-2 text-center">
