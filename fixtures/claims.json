@@ -1,6 +1,6 @@
 [
   {
-    "filing_date": "2014-05-10",
+    "filed_at": "2014-05-10",
     "reason": "Because I got high",
     "policy_id": "59120",
     "amount": 777.77,
@@ -9,7 +9,7 @@
     "peer_reviewer": "John Doe"
   },
   {
-    "filing_date": "2014-06-09",
+    "filed_at": "2014-06-09",
     "reason": "Because they got high",
     "policy_id": "908975",
     "amount": 1337,
