@@ -1,7 +1,7 @@
 window._ = require 'underscore'
 window.Backbone = require 'backbone'
 require 'marionette'
-require 'backbone.validation'
+require 'backbone-validation'
 window.$ = Backbone.$
 
 Router = require './router.coffee'
