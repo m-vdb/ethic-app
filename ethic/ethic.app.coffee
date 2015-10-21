@@ -20,7 +20,7 @@ MainLayout = require './views/main.layout.coffee'
 HomeView = require './views/home/home.view.coffee'
 MenuView = require './views/menu/menu.view.coffee'
 PolicyListView = require './views/policies/list.view.coffee'
-RegisterPolicyView = require './views/policies/register.view.coffee'
+RegisterPolicyLayout = require './views/policies/register/step.layout.coffee'
 ClaimListView = require './views/claims/list.view.coffee'
 FileClaimView = require './views/claims/file.view.coffee'
 PaymentView = require './views/payment/payment.view.coffee'
@@ -89,7 +89,7 @@ class App
         collection: @app.collections.claims
 
     @app.vent.on 'routing:registerPolicy', =>
-      @app.layout.content.show new RegisterPolicyView
+      @app.layout.showChildView 'content', new RegisterPolicyLayout
         model: new Policy()
         collection: @app.collections.policies
 
