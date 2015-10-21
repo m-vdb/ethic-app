@@ -82,10 +82,10 @@ class App
   routingViews: ->
     @app.vent.on 'routing:home', =>
       homeView = new HomeView()
-      @app.layout.content.show homeView
-      homeView.policies.show new PolicyListView
+      @app.layout.showChildView 'content', homeView
+      homeView.showChildView 'policies', new PolicyListView
         collection: @app.collections.policies
-      homeView.claims.show new ClaimListView
+      homeView.showChildView 'claims', new ClaimListView
         collection: @app.collections.claims
 
     @app.vent.on 'routing:registerPolicy', =>
@@ -95,19 +95,19 @@ class App
 
     @app.vent.on 'routing:fileClaim', =>
       # TODO: relies on polcicy collection content
-      @app.layout.content.show new FileClaimView
+      @app.layout.showChildView 'content', new FileClaimView
         model: new Claim()
         collection: @app.collections.claims
         policiesCollection: @app.collections.policies
 
     @app.vent.on 'routing:payment', =>
-      @app.layout.content.show new PaymentView()
+      @app.layout.showChildView 'content', new PaymentView()
 
     @app.vent.on 'routing:faq', =>
-      @app.layout.content.show new FAQView()
+      @app.layout.showChildView 'content', new FAQView()
 
     @app.vent.on 'routing:tos', =>
-      @app.layout.content.show new TOSView()
+      @app.layout.showChildView 'content', new TOSView()
 
 
 module.exports = window.ethic = App.get()
