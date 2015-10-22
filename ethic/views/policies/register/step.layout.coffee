@@ -14,8 +14,8 @@ class RegisterStepLayout extends Backbone.Marionette.LayoutView
   template: require './step.layout.html'
 
   regions:
-    progress: ".register-progress"
-    content: ".register-step-content"
+    progress: ".register-policy-progress"
+    content: ".register-policy-step-content"
 
   childEvents:
     'step:over': 'onStepOver'

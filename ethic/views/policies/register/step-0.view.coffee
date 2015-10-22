@@ -4,6 +4,7 @@ require 'marionette'
 class Step0RegisterPolicyView extends Backbone.Marionette.ItemView
 
   template: require './step-0.view.html'
+  className: 'register-policy-step-0'
 
   ui:
     startRegister: '.js-start-register'
