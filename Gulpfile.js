@@ -36,3 +36,6 @@ gulp.task('watch', function () {
     gulp.start('build');
   });
 });
+
+
+gulp.task('default', ['build']);
