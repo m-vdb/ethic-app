@@ -1,5 +1,6 @@
 carMakes = require '../data/car-makes.json'
 carModels = require '../data/car-models.json'
+insuranceProviders = require '../data/insurance-providers.json'
 
 
 class Policy extends Backbone.Model
@@ -21,6 +22,11 @@ class Policy extends Backbone.Model
         validCarModels = _.pluck carModels[computedState.car_make], 'id'
         Backbone.Validation.validators.oneOf value, attr, validCarModels, @
       msg: 'Please enter a valid car model.'
+
+    insurance_provider:
+      required: true
+      oneOf: _.pluck(insuranceProviders, "id")
+      msg: 'Please enter a valid insurance provider.'
 
     initial_premium:
       required: true
