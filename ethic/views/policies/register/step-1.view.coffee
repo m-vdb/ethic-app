@@ -6,12 +6,15 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
 
   template: require './step-1.view.html'
   ui:
-    errorContainer: '.form-error-container'
+    errorList: '.form-error-list'
     submitContainer: '.js-submit-container'
     submit: '.js-submit'
 
   events:
     'click @ui.submit': 'onSubmit'
+
+  modelEvents:
+    'change': 'clearErrors'
 
   childViewContainer: '.form-step-container'
   childView: formInlines.BaseInline
@@ -32,20 +35,31 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
 
   onShow: ->
     @addChild()
+    Backbone.Validation.bind @, invalid: @onInvalid
+
+  isFullyDisplayed: ->
+    @children.length == formInlines.length
 
   onInlineValid: (view) ->
-    # TODO clear error
+    isFullyDisplayed = @isFullyDisplayed()
     # we only do things if the view is the last one
     # user might change values of inputs in between
-    if @children.findByIndex(@children.length - 1) is view
-      if @children.length < formInlines.length
-        @addChild()
-      else
-        @ui.submitContainer.show()
+    if @children.findByIndex(@children.length - 1) is view and not isFullyDisplayed
+      @addChild()
 
-  onInlineInValid: (error) ->
-    # TODO add error
-    true
+    # if all the views are displayed and the form is valid
+    # we should show the submit button
+    if isFullyDisplayed
+      @ui.submitContainer.show()
+
+  clearErrors: ->
+    @ui.errorList.html ''
+
+  onInvalid: (view, attr, error) ->
+    $(".error-#{attr}", view.ui.errorList).remove()  # do not duplicate errors
+    view.ui.errorList.append "<li class='error-#{attr}'>#{ error }</li>"
+    if view.isFullyDisplayed()
+      view.ui.submitContainer.hide()
 
   onSubmit: (e) ->
     e.preventDefault()
