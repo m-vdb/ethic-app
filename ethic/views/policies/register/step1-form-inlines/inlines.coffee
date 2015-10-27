@@ -56,6 +56,7 @@ class Inline1 extends BaseInline
   onCarMakeChange: ->
     @ui.input.select2 'destroy'
     @onRender()
+    # TODO: display error message "empty"
 
 
 class Inline2 extends BaseInline
