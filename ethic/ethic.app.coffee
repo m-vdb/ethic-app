@@ -1,8 +1,9 @@
+window.$ = window.jQuery = require 'jquery'
 window._ = require 'underscore'
 window.Backbone = require 'backbone'
 require 'marionette'
 require 'backbone-validation'
-window.$ = window.jQuery = Backbone.$
+require './utils/backbone.inheritance.coffee'
 
 Router = require './router.coffee'
 Controller = require './controller.coffee'
