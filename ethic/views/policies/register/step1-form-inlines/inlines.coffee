@@ -20,8 +20,6 @@ class BaseInline extends Backbone.Marionette.ItemView
     @_timer = setTimeout =>
       if @model.set(name, val, validate: true)
         @triggerMethod 'inline:valid'
-      else
-        @triggerMethod 'inline:invalid', 'errorMessage'  # TODO
     , 500
 
   getInputValue: ->
