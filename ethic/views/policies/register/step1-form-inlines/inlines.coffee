@@ -21,12 +21,15 @@ class BaseInline extends Backbone.Marionette.ItemView
     name = @getAttrName()
     val = @getInputValue()
     @_timer = setTimeout =>
+      @beforeSet()
       if @model.set(name, val, validate: true)
         @triggerMethod 'inline:valid'
     , 500
 
   getInputValue: ->
     @ui.input.val()
+
+  beforeSet: ->
 
 
 class Inline0 extends BaseInline
@@ -40,6 +43,9 @@ class Inline0 extends BaseInline
       data: placeholder.concat @carMakes
       templateSelection: (item) -> item.name
       templateResult: (item) -> item.name
+
+  beforeSet: ->
+    @model.unset 'car_model'
 
 
 class Inline1 extends BaseInline
