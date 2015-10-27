@@ -4,6 +4,7 @@ require 'marionette'
 
 class BaseInline extends Backbone.Marionette.ItemView
 
+  className: 'js-step1-form-inline inline-block'
   ui:
     input: '.js-input'
 
@@ -26,7 +27,6 @@ class BaseInline extends Backbone.Marionette.ItemView
 class Inline0 extends BaseInline
 
   template: require './inline0.view.html'
-  className: 'js-step1-form-inline inline-block'
 
   onRender: ->
     placeholder = [{id: "", name: "Select a car make"}]
