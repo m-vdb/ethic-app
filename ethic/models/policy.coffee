@@ -13,12 +13,14 @@ class Policy extends Backbone.Model
     car_make:
       required: true
       oneOf: _.pluck(carMakes, "id")
+      msg: 'Please enter a valid car make.'
 
     car_model:
       required: true
       fn: (value, attr, computedState) ->
         validCarModels = _.pluck carModels[computedState.car_make], 'id'
         Backbone.Validation.validators.oneOf value, attr, validCarModels, @
+      msg: 'Please enter a valid car model.'
 
     initial_premium:
       required: true
