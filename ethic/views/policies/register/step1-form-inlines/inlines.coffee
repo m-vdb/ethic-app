@@ -76,6 +76,14 @@ class Inline3 extends BaseInline
 class Inline4 extends BaseInline
 
   template: require './inline4.view.html'
+  insuranceProfiders: require '../../../../data/insurance-providers.json'
+
+  onRender: ->
+    placeholder = [{id: "", name: "Select an insurance provider"}]
+    @ui.input.select2
+      data: placeholder.concat @insuranceProfiders
+      templateSelection: (item) -> item.name
+      templateResult: (item) -> item.name
 
 
 class Inline5 extends BaseInline
