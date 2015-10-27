@@ -63,6 +63,9 @@ class Inline2 extends BaseInline
 
   template: require './inline2.view.html'
 
+  serializeData: ->
+    currentYear: new Date().getFullYear()
+
 
 class Inline3 extends BaseInline
 
