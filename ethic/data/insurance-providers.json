@@ -9,5 +9,7 @@
   {"id": "21st_century", "name": "21st Century"},
   {"id": "progressive", "name": "Progressive"},
   {"id": "geico", "name": "Geico"},
-  {"id": "insurance", "name": "insurance"}
+  {"id": "insurance", "name": "insurance"},
+  {"id": "safeco", "name": "Safeco"},
+  {"id": "hartford", "name": "The Hartford"}
 ]
