@@ -6,6 +6,7 @@
     "bootstrap": "^3.3.5",
     "chance": "^0.7.7",
     "marionette": "^2.4.3",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "select2": "^4.0.0"
   }
 }
