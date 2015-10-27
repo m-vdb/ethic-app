@@ -27,18 +27,34 @@ class BaseInline extends Backbone.Marionette.ItemView
 class Inline0 extends BaseInline
 
   template: require './inline0.view.html'
+  carMakes: require '../../../../data/car-makes.json'
 
   onRender: ->
     placeholder = [{id: "", name: "Select a car make"}]
-    carMakes = require '../../../../data/car-makes.json'
     @ui.input.select2
-      data: placeholder.concat carMakes
+      data: placeholder.concat @carMakes
       templateSelection: (item) -> item.name
       templateResult: (item) -> item.name
+
 
 class Inline1 extends BaseInline
 
   template: require './inline1.view.html'
+  carModels: require '../../../../data/car-models.json'
+
+  modelEvents:
+    'change:car_make': 'onCarMakeChange'
+
+  onRender: ->
+    placeholder = [{id: "", name: "Select a car model"}]
+    @ui.input.select2
+      data: placeholder.concat @carModels[@model.get 'car_make']
+      templateSelection: (item) -> item.name
+      templateResult: (item) -> item.name
+
+  onCarMakeChange: ->
+    @ui.input.select2 'destroy'
+    @onRender()
 
 
 class Inline2 extends BaseInline
