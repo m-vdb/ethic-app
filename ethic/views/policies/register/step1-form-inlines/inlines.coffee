@@ -54,19 +54,25 @@ class Inline1 extends BaseInline
   carModels: require '../../../../data/car-models.json'
 
   modelEvents:
+    'invalid': 'onInvalid'
     'change:car_make': 'onCarMakeChange'
 
   onRender: ->
     placeholder = [{id: "", name: "Select a car model"}]
+    @ui.input.prop "disabled", false
     @ui.input.select2
       data: placeholder.concat @carModels[@model.get 'car_make']
       templateSelection: (item) -> item.name
       templateResult: (item) -> item.name
 
+  onInvalid: (model, invalidAttrs)->
+    if invalidAttrs.car_make
+      @ui.input.prop "disabled", true
+
   onCarMakeChange: ->
     @ui.input.select2 'destroy'
-    @onRender()
-    # TODO: display error message "empty"
+    @onRender()  # re-render the select2
+    @onChange()  # trigger a change for validation
 
 
 class Inline2 extends BaseInline
