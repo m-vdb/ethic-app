@@ -69,6 +69,7 @@ class Inline2 extends BaseInline
 
 class Inline3 extends BaseInline
 
+  # TODO: use https://libraries.io/bower/edmundssdk for validation
   template: require './inline3.view.html'
 
 
