@@ -16,13 +16,16 @@ class BaseInline extends Backbone.Marionette.ItemView
   onChange: ->
     clearTimeout @_timer
     name = @ui.input.attr 'name'
-    val = @ui.input.val()
+    val = @getInputValue()
     @_timer = setTimeout =>
       if @model.set(name, val, validate: true)
         @triggerMethod 'inline:valid'
       else
         @triggerMethod 'inline:invalid', 'errorMessage'  # TODO
     , 500
+
+  getInputValue: ->
+    @ui.input.val()
 
 
 class Inline0 extends BaseInline
@@ -94,6 +97,21 @@ class Inline5 extends BaseInline
 class Inline6 extends BaseInline
 
   template: require './inline6.view.html'
+  ui:
+    periodSelect: 'select[name=premium_period]'
+
+  events:
+    'change @ui.periodSelect': 'onChange'
+
+  onRender: ->
+    @ui.periodSelect.select2
+      data: ['monthly', 'yearly']
+
+  getInputValue: ->
+    val = super
+    if @ui.periodSelect.val() == 'yearly'
+      val = (val / 12).toFixed()
+    val
 
 
 module.exports = [
