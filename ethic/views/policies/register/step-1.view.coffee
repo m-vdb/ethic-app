@@ -20,7 +20,6 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
   childView: formInlines.BaseInline
   childEvents:
     'inline:valid': 'onInlineValid'
-    'inline:invalid': 'onInlineInValid'
 
   constructor: (options)->
     window.step1 = @
