@@ -9,8 +9,9 @@ class BaseInline extends Backbone.Marionette.ItemView
     input: '.js-input'
 
   events:
-    'change @ui.input': 'onChange'
-    'keyup @ui.input': 'onChange'
+    'change @ui.input': 'onChange'  # selects
+    'keyup @ui.input': 'onChange'  # text input
+    'oninput @ui.input': 'onChange'  # number input
 
   onChange: ->
     clearTimeout @_timer
