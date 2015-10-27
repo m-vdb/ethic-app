@@ -26,7 +26,15 @@ class BaseInline extends Backbone.Marionette.ItemView
 class Inline0 extends BaseInline
 
   template: require './inline0.view.html'
+  className: 'js-step1-form-inline inline-block'
 
+  onRender: ->
+    placeholder = [{id: "", name: "Select a car make"}]
+    carMakes = require '../../../../data/car-makes.json'
+    @ui.input.select2
+      data: placeholder.concat carMakes
+      templateSelection: (item) -> item.name
+      templateResult: (item) -> item.name
 
 class Inline1 extends BaseInline
 
