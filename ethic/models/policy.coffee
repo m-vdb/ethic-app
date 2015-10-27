@@ -8,16 +8,16 @@ class Policy extends Backbone.Model
 
     car_year:
       required: true
-      range: [1950, new Date().getFullYear()]
+      range: [2000, new Date().getFullYear()]
 
     car_make:
       required: true
-      oneOf: _.pluck(carMakes, "make_id")
+      oneOf: _.pluck(carMakes, "id")
 
     car_model:
       required: true
       fn: (value, attr, computedState) ->
-        validCarModels = carModels[computedState.car_make] or []
+        validCarModels = _.pluck carModels[computedState.car_make], 'id'
         Backbone.Validation.validators.oneOf value, attr, validCarModels, @
 
     initial_premium:
