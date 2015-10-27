@@ -2,15 +2,12 @@
   <div class="row">
     <div class="col-md-offset-2 col-md-8 text-center">
       <form class="register-policy-form-inline">
-        <div class="form-step">I own a car,</div>
-        <div class="form-step inline-block">The make is <input type='text' name='car_make' class='js-input'/>,</div>
-        <div class="form-step inline-block">and the model is <input type='text' name='car_model' class='js-input'/></div>
-        <div class="form-step">It was manufactured in <input type='text' name='car_year' class='js-input'/></div>
-        <div class="form-step">The VIN number is <input type='text' name='car_vin_number' class='js-input'></div>
-        <div class="form-step">My insurance policy is underwritten by <input type='text' name='insurance' class='js-input'/></div>
-        <div class="form-step">My current deductible is $<input type='text' name='initial_deductible' class='js-input'/></div>
-        <div class="form-step">and my monthly premium is $<input type='text' name='initial_premium' class='js-input'/></div>
-        <button class='btn btn-success js-submit'>Go on</button>
+        <div class="js-form-step">I own a car,</div>
+        <div class="form-step-container"></div>
+        <div class="form-error-container"></div>
+        <div class="js-submit-container" style="display:none;">
+          <button class='btn btn-success js-submit'>Go on</button>
+        </div>
       </form>
     </div>
   </div>
