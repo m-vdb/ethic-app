@@ -13,9 +13,12 @@ class BaseInline extends Backbone.Marionette.ItemView
     'keyup @ui.input': 'onChange'  # text input
     'oninput @ui.input': 'onChange'  # number input
 
+  getAttrName: ->
+    @ui.input.attr 'name'
+
   onChange: ->
     clearTimeout @_timer
-    name = @ui.input.attr 'name'
+    name = @getAttrName()
     val = @getInputValue()
     @_timer = setTimeout =>
       if @model.set(name, val, validate: true)
