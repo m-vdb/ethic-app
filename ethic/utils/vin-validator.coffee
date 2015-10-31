@@ -1,5 +1,4 @@
 
-
 class VinValidator
 
   defaultMessages:
@@ -52,7 +51,7 @@ class VinValidator
 
   _transliterateLetter: (letter) ->
     digit = transliterationMap[letter]
-    throw new Error(@messages.default) unless digit
+    throw new Error(@messages.default) unless digit?
     digit
 
   validateWMI: (value) ->
@@ -65,8 +64,8 @@ class VinValidator
     throw new Error(@messages.minYear) unless year >= @minYear
 
   validateMaxYear: (year) ->
-    return unless @minYear
-    throw new Error(@messages.maxYear) unless year <= @minYear
+    return unless @maxYear
+    throw new Error(@messages.maxYear) unless year <= @maxYear
 
   decodeYear: (value) ->
     # https://en.wikipedia.org/wiki/Vehicle_identification_number#Model_year_encoding
@@ -76,7 +75,7 @@ class VinValidator
     yearParts = yearMap[yearDigit]
 
     throw new Error(@messages.default) unless yearParts
-    return if helperDigitIsNumeric then yearParts[0] else yearParts[0]
+    return if helperDigitIsNumeric then yearParts[0] else yearParts[1]
 
 
 transliterationMap =
@@ -122,7 +121,7 @@ digitWeights =
   4: 4
   5: 3
   6: 2
-  7: 1
+  7: 10
   8: 0
   9: 9
   10: 8
@@ -166,7 +165,7 @@ yearMap =
   9: [2009, 2039]
 
 wmiList = [
-  "WMI","10T","11V","137","15G","17N","18X","19U","1A4","1A8","1AC","1AM","1B3","1B4",
+  "10T","11V","137","15G","17N","18X","19U","1A4","1A8","1AC","1AM","1B3","1B4",
   "1B6","1B7","1B7","1BA","1BB","1BD","1C3","1C4","1C8","1C9","1CY","1D3","1D4","1D5",
   "1D7","1D8","1EC","1F1","1F6","1FA","1FB","1FC","1FD","1FE","1FM","1FT","1FU","1FV",
   "1G1","1G2","1G3","1G4","1G5","1G6","1G8","1GA","1GB","1GC","1GD","1GE","1GF","1GG",
