@@ -76,6 +76,7 @@ class InlinePremium extends BaseInline
 
 
 module.exports = [
-  InlineInsuranceProvider, InlineDeductible, InlinePremium
+  InlineVIN, InlineInsuranceProvider,
+  InlineDeductible, InlinePremium
 ]
 module.exports.BaseInline = BaseInline
