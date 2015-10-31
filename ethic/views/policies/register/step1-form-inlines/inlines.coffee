@@ -83,15 +83,14 @@ class Inline2 extends BaseInline
     currentYear: new Date().getFullYear()
 
 
-class Inline3 extends BaseInline
+class InlineVIN extends BaseInline
 
-  # TODO: use https://libraries.io/bower/edmundssdk for validation
-  template: require './inline3.view.html'
+  template: require './inline-vin.view.html'
 
 
-class Inline4 extends BaseInline
+class InlineInsuranceProvider extends BaseInline
 
-  template: require './inline4.view.html'
+  template: require './inline-insurance-provider.view.html'
   insuranceProfiders: require '../../../../data/insurance-providers.json'
 
   onRender: ->
@@ -102,14 +101,14 @@ class Inline4 extends BaseInline
       templateResult: (item) -> item.name
 
 
-class Inline5 extends BaseInline
+class InlineDeductible extends BaseInline
 
-  template: require './inline5.view.html'
+  template: require './inline-deductible.view.html'
 
 
-class Inline6 extends BaseInline
+class InlinePremium extends BaseInline
 
-  template: require './inline6.view.html'
+  template: require './inline-premium.view.html'
   ui:
     periodSelect: 'select[name=premium_period]'
 
@@ -128,7 +127,6 @@ class Inline6 extends BaseInline
 
 
 module.exports = [
-  Inline0, Inline1, Inline2, Inline3,
-  Inline4, Inline5, Inline6
+  InlineInsuranceProvider, InlineDeductible, InlinePremium
 ]
 module.exports.BaseInline = BaseInline
