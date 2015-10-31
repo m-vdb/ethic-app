@@ -19,6 +19,7 @@
     "chai-fuzzy": "1.6.0",
     "coffee-script": "1.10.0",
     "gulp-mocha-phantomjs": "^0.10.1",
+    "gulp-run-sequence": "^0.3.2",
     "mocha": "^2.3.3",
     "node-static": "^0.7.7",
     "sinon": "1.17.1",

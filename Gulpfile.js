@@ -1,5 +1,6 @@
 require('coffee-script/register');
 var gulp = require('gulp'),
+    runSequence = require('gulp-run-sequence'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
     watch = require('gulp-watch'),
     rename = require("gulp-rename"),
@@ -40,9 +41,9 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build-test-setup', function() {
+gulp.task('build-tests-setup', function() {
 
-  gulp.src(['./test/setup.js'], {read: false})
+  return gulp.src(['./test/setup.js'], {read: false})
 
     // Browserify, and add source maps if this isn't a production build
     .pipe(browserify({
@@ -59,9 +60,9 @@ gulp.task('build-test-setup', function() {
     .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('build-test', ['build-test-setup'], function() {
+gulp.task('build-tests', function() {
 
-  gulp.src(['./test/**/*.coffee'], {read: false})
+  return gulp.src(['./test/**/*.coffee'], {read: false})
 
     // Browserify, and add source maps if this isn't a production build
     .pipe(browserify({
@@ -79,14 +80,18 @@ gulp.task('build-test', ['build-test-setup'], function() {
 });
 
 
-gulp.task('test', ['build-test'], function () {
+gulp.task('run-tests', function (cb) {
   return gulp
     .src('test/runner.html')
     .pipe(mochaPhantomJS({reporter: 'spec'}))
     .once('end', function () {
+      cb();
       process.exit();
     });
 });
 
 
 gulp.task('default', ['build']);
+gulp.task('test', function (cb) {
+  runSequence('build-tests-setup', 'build-tests', 'run-tests', cb)
+});
