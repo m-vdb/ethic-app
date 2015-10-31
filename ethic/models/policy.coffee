@@ -20,10 +20,12 @@ class Policy extends Backbone.Model
     initial_premium:
       required: true
       pattern: 'number'
+      min: 1
 
     initial_deductible:
       required: true
       pattern: 'number'
+      min: 1
 
 
 module.exports = Policy
