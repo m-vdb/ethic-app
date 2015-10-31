@@ -71,7 +71,7 @@ class InlinePremium extends BaseInline
 
   getInputValue: ->
     val = super
-    if @ui.periodSelect.val() == 'yearly'
+    if val and @ui.periodSelect.val() == 'yearly'
       val = (val / 12).toFixed()
     val
 
