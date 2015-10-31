@@ -8,11 +8,6 @@ class BaseInline extends Backbone.Marionette.ItemView
   ui:
     input: '.js-input'
 
-  events:
-    'change @ui.input': 'onChange'  # selects
-    'keyup @ui.input': 'onChange'  # text input
-    'oninput @ui.input': 'onChange'  # number input
-
   getAttrName: ->
     @ui.input.attr 'name'
 
@@ -35,12 +30,16 @@ class BaseInline extends Backbone.Marionette.ItemView
 class InlineVIN extends BaseInline
 
   template: require './inline-vin.view.html'
+  events:
+    'keyup @ui.input': 'onChange'
 
 
 class InlineInsuranceProvider extends BaseInline
 
   template: require './inline-insurance-provider.view.html'
   insuranceProfiders: require '../../../../data/insurance-providers.json'
+  events:
+    'change @ui.input': 'onChange'
 
   onRender: ->
     placeholder = [{id: "", name: "Select an insurance provider"}]
@@ -53,6 +52,9 @@ class InlineInsuranceProvider extends BaseInline
 class InlineDeductible extends BaseInline
 
   template: require './inline-deductible.view.html'
+  events:
+    'oninput @ui.input': 'onChange'
+    'keyup @ui.input': 'onChange'
 
 
 class InlinePremium extends BaseInline
@@ -63,6 +65,8 @@ class InlinePremium extends BaseInline
 
   events:
     'change @ui.periodSelect': 'onChange'
+    'oninput @ui.input': 'onChange'
+    'keyup @ui.input': 'onChange'
 
   onRender: ->
     @ui.periodSelect.select2
