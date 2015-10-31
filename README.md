@@ -1,7 +1,8 @@
 # ethic-app
-Frontend code for Ethic.
 
 [![Circle CI](https://circleci.com/gh/m-vdb/ethic-app.svg?style=shield&circle-token=ef3b447df979449d690cd993da48dc0a112a0b30)](https://circleci.com/gh/m-vdb/ethic-abb/tree/master)
+
+Frontend code for Ethic.
 
 ## Installation
 
