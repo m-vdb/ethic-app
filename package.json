@@ -15,7 +15,17 @@
     "partialify": "^3.1.5"
   },
   "devDependencies": {
-    "node-static": "^0.7.7"
+    "chai": "3.3.0",
+    "chai-fuzzy": "1.6.0",
+    "coffee-script": "1.10.0",
+    "gulp-mocha-phantomjs": "^0.10.1",
+    "mocha": "^2.3.3",
+    "node-static": "^0.7.7",
+    "sinon": "1.17.1",
+    "sinon-chai": "2.8.0"
+  },
+  "engines": {
+    "node": "~4.2.1"
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
