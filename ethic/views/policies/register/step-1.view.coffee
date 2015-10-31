@@ -48,7 +48,7 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
 
     # if all the views are displayed and the form is valid
     # we should show the submit button
-    if isFullyDisplayed
+    if isFullyDisplayed and @model.isValid()
       @ui.submitContainer.show()
 
   clearErrors: ->
