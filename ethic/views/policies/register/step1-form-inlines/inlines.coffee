@@ -16,15 +16,12 @@ class BaseInline extends Backbone.Marionette.ItemView
     name = @getAttrName()
     val = @getInputValue()
     @_timer = setTimeout =>
-      @beforeSet()
       if @model.set(name, val, validate: true)
         @triggerMethod 'inline:valid'
     , 500
 
   getInputValue: ->
     @ui.input.val()
-
-  beforeSet: ->
 
 
 class InlineVIN extends BaseInline
