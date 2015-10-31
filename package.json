@@ -29,6 +29,7 @@
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
-    "start": "node testserver.js"
+    "start": "node testserver.js",
+    "test": "./node_modules/gulp/bin/gulp.js test"
   }
 }
