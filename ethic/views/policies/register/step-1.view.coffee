@@ -21,10 +21,6 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
   childEvents:
     'inline:valid': 'onInlineValid'
 
-  constructor: (options)->
-    window.step1 = @
-    super
-
   addChild: ->
     index = @children.length
     # we don't have the index in `getChildView` method
