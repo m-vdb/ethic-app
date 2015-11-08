@@ -8,6 +8,7 @@
     "marionette": "^2.4.3",
     "moment": "^2.10.6",
     "select2": "^4.0.0",
-    "dropzone": "~4.2.0"
+    "dropzone": "~4.2.0",
+    "reconfig": "~1.6.3"
   }
 }
