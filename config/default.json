@@ -2,6 +2,8 @@
   "api": {
     "base": "http://localhost:1234",
     "authenticate": "{{ api.base }}/authenticate",
-    "member": "{{ api.base }}/member"
+    "member": "{{ api.base }}/member",
+    "policies": "{{ api.base }}/members/:id/policies",
+    "claims": "{{ api.base }}/members/:id/claims"
   }
 }
