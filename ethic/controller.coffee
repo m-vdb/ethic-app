@@ -7,7 +7,9 @@ class Controller extends Backbone.Marionette.Controller
     _.extend @, options
 
   onHome: ->
-    @vent.trigger 'routing:home'
+    $.when @collections.policies.fetch(), @collections.claims.fetch()
+      .done =>
+        @vent.trigger 'routing:home'
 
   onLogin: ->
     @vent.trigger 'routing:login'
