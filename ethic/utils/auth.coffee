@@ -3,9 +3,25 @@ config = require '../config.coffee'
 
 class AuthUtils
 
-  checkUrl: config.get('ethic_backend.base_url')
+  memberUrl: config.get('api.member')
+  authenticateUrl: config.get('api.authenticate')
 
-  onError: (errorThrown) ->
+  @get: ->
+    if not @instance?
+      instance = new @
+
+    instance
+
+  constructor: ->
+    $.ajaxSetup
+      xhrFields:
+        withCredentials: true
+      crossDomain: true
+
+  setMember: (member) ->
+    @member = member
+
+  onCheckError: (errorThrown) ->
     switch errorThrown
       when "Unauthorized" then window.location.replace('#login')
       when "Forbidden" then window.location.replace('#login')
@@ -13,11 +29,23 @@ class AuthUtils
 
   checkAuthentication: (callback) ->
     $.ajax
-      url: @checkUrl
-      success: callback
+      url: @memberUrl
+      success: (data) =>
+        @member.set data
+        callback()
       error: (jqXHR, textStatus, errorThrown) =>
-        @onError(errorThrown)
+        @onCheckError(errorThrown)
         callback()
 
+  authenticate: (data) ->
+    $.ajax
+      type: 'POST'
+      url: @authenticateUrl
+      data: JSON.stringify(data)
+      contentType: 'application/json'
+      dataType: "json"
+      success: (data) =>
+        @member.set data
+        window.location.replace '#'
 
-module.exports = new AuthUtils()
+module.exports = AuthUtils.get()
