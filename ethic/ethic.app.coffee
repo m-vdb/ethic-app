@@ -93,7 +93,8 @@ class App
 
     @app.vent.on 'routing:login', =>
       @showAuthLayout()
-      @layout.showChildView 'content', new LoginView()
+      @layout.showChildView 'content', new LoginView
+        model: @member
 
     @app.vent.on 'routing:registerPolicy', =>
       @showMainLayout()
