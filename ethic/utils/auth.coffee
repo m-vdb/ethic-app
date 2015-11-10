@@ -40,13 +40,14 @@ class AuthUtils
         @onCheckError(errorThrown)
         callback()
 
-  authenticate: (data) ->
+  authenticate: (data, onError) ->
     $.ajax
       type: 'POST'
       url: @authenticateUrl
       data: JSON.stringify(data)
       contentType: 'application/json'
       dataType: "json"
+      error: onError
       success: (data) =>
         @member.set data
         window.location.replace '#'
