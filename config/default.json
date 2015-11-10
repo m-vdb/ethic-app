@@ -1,5 +1,7 @@
 {
-  "ethic_backend": {
-    "base_url": "http://localhost:1234"
+  "api": {
+    "base": "http://localhost:1234",
+    "authenticate": "{{ api.base }}/authenticate",
+    "member": "{{ api.base }}/member"
   }
 }
