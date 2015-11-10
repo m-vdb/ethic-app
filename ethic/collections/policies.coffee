@@ -1,11 +1,11 @@
 Policy = require '../models/policy.coffee'
+CollectionWithMember = require './collectionWithMember.coffee'
 
 
-class PolicyCollection extends Backbone.Collection
+class PolicyCollection extends CollectionWithMember
 
   model: Policy
+  urlConfigKey: 'api.policies'
 
-  fetch: ->
-    true
 
 module.exports = PolicyCollection
