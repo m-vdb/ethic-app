@@ -72,12 +72,6 @@ class App
       if window.Backbone.history
         window.Backbone.history.start()
 
-    # debugging purposes
-    @app.on 'start', =>
-      if location.search.indexOf('fixtures') != -1
-        @collections.policies.add require('../fixtures/policies.json')
-        @collections.claims.add require('../fixtures/claims.json')
-
     AuthUtils.checkAuthentication =>
       @app.start options
 
