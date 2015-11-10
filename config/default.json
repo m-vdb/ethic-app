@@ -1,5 +1,5 @@
 {
-  "ethic": {
-    "api": "http://localhost:1234"
+  "ethic_backend": {
+    "base_url": "http://localhost:1234"
   }
 }
