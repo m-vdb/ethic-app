@@ -21,6 +21,9 @@ class AuthUtils
   setMember: (member) ->
     @member = member
 
+  isAuthenticated: ->
+    @member and @member.id?
+
   onCheckError: (errorThrown) ->
     switch errorThrown
       when "Unauthorized" then window.location.replace('#login')
