@@ -54,14 +54,14 @@ class App
     @member = new Member()
     AuthUtils.setMember @member
 
-    @app.on 'start', ->
+    @app.on 'start', =>
       @collections =
-        claims: new ClaimCollection()
-        policies: new PolicyCollection()
+        claims: new ClaimCollection @member
+        policies: new PolicyCollection @member
 
-    @app.on 'start', ->
+    @app.on 'start', =>
       @controller = new Controller
-        vent: @vent
+        vent: @app.vent
         collections: @collections
       @router = new Router
         controller: @controller
@@ -73,7 +73,7 @@ class App
         window.Backbone.history.start()
 
     # debugging purposes
-    @app.on 'start', ->
+    @app.on 'start', =>
       if location.search.indexOf('fixtures') != -1
         @collections.policies.add require('../fixtures/policies.json')
         @collections.claims.add require('../fixtures/claims.json')
@@ -87,9 +87,9 @@ class App
       homeView = new HomeView()
       @layout.showChildView 'content', homeView
       homeView.showChildView 'policies', new PolicyListView
-        collection: @app.collections.policies
+        collection: @collections.policies
       homeView.showChildView 'claims', new ClaimListView
-        collection: @app.collections.claims
+        collection: @collections.claims
 
     @app.vent.on 'routing:login', =>
       @showAuthLayout()
@@ -100,15 +100,15 @@ class App
       @showMainLayout()
       @layout.showChildView 'content', new RegisterPolicyLayout
         model: new Policy()
-        collection: @app.collections.policies
+        collection: @collections.policies
 
     @app.vent.on 'routing:fileClaim', =>
       @showMainLayout()
       # TODO: relies on polcicy collection content
       @layout.showChildView 'content', new FileClaimView
         model: new Claim()
-        collection: @app.collections.claims
-        policiesCollection: @app.collections.policies
+        collection: @collections.claims
+        policiesCollection: @collections.policies
 
     @app.vent.on 'routing:payment', =>
       @showMainLayout()
@@ -127,7 +127,7 @@ class App
     @layout = new MainLayout()
     @app.main.show @layout
     @layout.menu.show new MenuView
-      router: @app.router
+      router: @router
 
   showAuthLayout: ->
     return if @layout instanceof BaseLayout
