@@ -14,6 +14,7 @@ PolicyCollection = require './collections/policies.coffee'
 ClaimCollection = require './collections/claims.coffee'
 
 # models
+Member = require './models/member.coffee'
 Policy = require './models/policy.coffee'
 Claim = require './models/claim.coffee'
 
@@ -49,6 +50,9 @@ class App
 
     @app.addRegions
       main: options.container
+
+    @member = new Member()
+    AuthUtils.setMember @member
 
     @app.on 'start', ->
       @collections =
