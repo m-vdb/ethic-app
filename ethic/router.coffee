@@ -18,6 +18,8 @@ class Router extends Backbone.Marionette.AppRouter
     decorated = ->
       if route != 'login' and not AuthUtils.isAuthenticated()
         window.location.replace '#login'
+      else if route == 'login' and AuthUtils.isAuthenticated()
+        window.location.replace '#'
       else
         method()
     super route, methodName, decorated
