@@ -19,14 +19,31 @@ class LoginView extends Backbone.Marionette.ItemView
     data =
       email: @ui.email.val()
       password: @ui.password.val()
-    if @validate data
-      AuthUtils.authenticate data, => @onAuthError()
+    if @model.set data, {validate: true}
+      AuthUtils.authenticate data, =>
+        @onAuthError()
 
-  validate: (data) ->
-    true
+   onRender: ->
+    Backbone.Validation.bind @,
+      valid: (view, attr) ->
+        view.onValid attr
+
+      invalid: (view, attr, error) ->
+        view.onInvalid attr, error
+
+  onValid: (attr) ->
+    formGroup = @ui[attr].parents('.form-group')
+    formGroup.removeClass 'has-error'
+    formGroup.children('.form-error-msg').html ''
+
+  onInvalid: (attr, error) ->
+    formGroup = @ui[attr].parents('.form-group')
+    formGroup.removeClass 'has-success'
+    formGroup.children('.form-error-msg').html error
 
   onAuthError: ->
-    true
+    @onInvalid 'email', 'Wrong email / password'
+    @onInvalid 'password', 'Wrong email / password'
 
 
 module.exports = LoginView
