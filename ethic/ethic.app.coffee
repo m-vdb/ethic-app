@@ -126,7 +126,7 @@ class App
     @layout = new MainLayout()
     @app.main.show @layout
     @layout.menu.show new MenuView
-      router: @router
+      router: @app.router
 
   showAuthLayout: ->
     return if @layout instanceof BaseLayout
