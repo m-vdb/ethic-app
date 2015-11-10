@@ -9,6 +9,9 @@ class Controller extends Backbone.Marionette.Controller
   onHome: ->
     @vent.trigger 'routing:home'
 
+  onLogin: ->
+    @vent.trigger 'routing:login'
+
   onRegisterPolicy: ->
     @vent.trigger 'routing:registerPolicy'
 
