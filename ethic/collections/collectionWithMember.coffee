@@ -1,7 +1,7 @@
 config = require '../config.coffee'
 
 
-class CollectionWithMember extends Bacckbone.Collection
+class CollectionWithMember extends Backbone.Collection
 
   urlConfigKey: null
 
@@ -11,3 +11,6 @@ class CollectionWithMember extends Bacckbone.Collection
   url: ->
     throw new Error("Missing urlConfigKey attribute.") unless @urlConfigKey
     config.get @urlConfigKey, id: @member.id
+
+
+module.exports = CollectionWithMember
