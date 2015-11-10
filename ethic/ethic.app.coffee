@@ -7,6 +7,7 @@ require './utils/backbone.inheritance.coffee'
 
 Router = require './router.coffee'
 Controller = require './controller.coffee'
+AuthUtils = require './utils/auth.coffee'
 
 # collections
 PolicyCollection = require './collections/policies.coffee'
@@ -16,10 +17,14 @@ ClaimCollection = require './collections/claims.coffee'
 Policy = require './models/policy.coffee'
 Claim = require './models/claim.coffee'
 
-# views
+# layouts
 MainLayout = require './views/main.layout.coffee'
+BaseLayout = require './views/base.layout.coffee'
+
+# views
 HomeView = require './views/home/home.view.coffee'
 MenuView = require './views/menu/menu.view.coffee'
+LoginView = require './views/auth/login.view.coffee'
 PolicyListView = require './views/policies/list.view.coffee'
 RegisterPolicyLayout = require './views/policies/register/step.layout.coffee'
 ClaimListView = require './views/claims/list.view.coffee'
@@ -30,7 +35,7 @@ TOSView = require './views/tos/tos.view.coffee'
 
 
 class App
-  instance = null    
+  instance = null
 
   # Static singleton retriever/loader
   @get: ->
@@ -45,70 +50,84 @@ class App
     @app.addRegions
       main: options.container
 
-    @app.addInitializer ->
-      @controller = new Controller
-        vent: @vent
-      @router = new Router
-          controller: @controller
-
-    @app.addInitializer ->
-      @layout = new MainLayout()
-      @main.show @layout
-      @layout.menu.show new MenuView
-        router: @router
-
-    @app.addInitializer ->
+    @app.on 'start', ->
       @collections =
         claims: new ClaimCollection()
         policies: new PolicyCollection()
 
-    @app.addInitializer _.bind(@routingViews, @)
+    @app.on 'start', ->
+      @controller = new Controller
+        vent: @vent
+        collections: @collections
+      @router = new Router
+        controller: @controller
 
-    @app.addInitializer ->
-      @collections.claims.fetch()
-      @collections.policies.fetch()
+    @app.on 'start', _.bind(@routingViews, @)
 
-    @app.addInitializer ->
+    @app.on 'start', ->
       if window.Backbone.history
         window.Backbone.history.start()
 
     # debugging purposes
-    @app.addInitializer ->
+    @app.on 'start', ->
       if location.search.indexOf('fixtures') != -1
         @collections.policies.add require('../fixtures/policies.json')
         @collections.claims.add require('../fixtures/claims.json')
 
-    @app.start options
+    AuthUtils.checkAuthentication =>
+      @app.start options
 
   routingViews: ->
     @app.vent.on 'routing:home', =>
+      @showMainLayout()
       homeView = new HomeView()
-      @app.layout.showChildView 'content', homeView
+      @layout.showChildView 'content', homeView
       homeView.showChildView 'policies', new PolicyListView
         collection: @app.collections.policies
       homeView.showChildView 'claims', new ClaimListView
         collection: @app.collections.claims
 
+    @app.vent.on 'routing:login', =>
+      @showAuthLayout()
+      @layout.showChildView 'content', new LoginView()
+
     @app.vent.on 'routing:registerPolicy', =>
-      @app.layout.showChildView 'content', new RegisterPolicyLayout
+      @showMainLayout()
+      @layout.showChildView 'content', new RegisterPolicyLayout
         model: new Policy()
         collection: @app.collections.policies
 
     @app.vent.on 'routing:fileClaim', =>
+      @showMainLayout()
       # TODO: relies on polcicy collection content
-      @app.layout.showChildView 'content', new FileClaimView
+      @layout.showChildView 'content', new FileClaimView
         model: new Claim()
         collection: @app.collections.claims
         policiesCollection: @app.collections.policies
 
     @app.vent.on 'routing:payment', =>
-      @app.layout.showChildView 'content', new PaymentView()
+      @showMainLayout()
+      @layout.showChildView 'content', new PaymentView()
 
     @app.vent.on 'routing:faq', =>
-      @app.layout.showChildView 'content', new FAQView()
+      @showMainLayout()
+      @layout.showChildView 'content', new FAQView()
 
     @app.vent.on 'routing:tos', =>
-      @app.layout.showChildView 'content', new TOSView()
+      @showMainLayout()
+      @layout.showChildView 'content', new TOSView()
+
+  showMainLayout: ->
+    return if @layout instanceof MainLayout
+    @layout = new MainLayout()
+    @app.main.show @layout
+    @layout.menu.show new MenuView
+      router: @router
+
+  showAuthLayout: ->
+    return if @layout instanceof BaseLayout
+    @layout = new BaseLayout()
+    @app.main.show @layout
 
 
 module.exports = window.ethic = App.get()
