@@ -22,7 +22,7 @@ class AuthUtils
     @member = member
 
   isAuthenticated: ->
-    @member and @member.id?
+    @member?.id
 
   onCheckError: (errorThrown) ->
     switch errorThrown
@@ -31,6 +31,7 @@ class AuthUtils
     # TODO: else
 
   checkAuthentication: (callback) ->
+    throw new Error('Missing member attribute.') unless @member
     $.ajax
       url: @memberUrl
       success: (data) =>
@@ -41,6 +42,7 @@ class AuthUtils
         callback()
 
   authenticate: (data, onError) ->
+    throw new Error('Missing member attribute.') unless @member
     $.ajax
       type: 'POST'
       url: @authenticateUrl
