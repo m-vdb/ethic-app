@@ -3,29 +3,30 @@ var gulp = require('gulp'),
     runSequence = require('gulp-run-sequence'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
     watch = require('gulp-watch'),
-    rename = require("gulp-rename"),
-    browserify = require('gulp-browserify'),
+    browserify = require('browserify'),
     partialify = require('partialify'),
     coffeeify = require('coffeeify'),
-    debowerify = require('debowerify');
+    debowerify = require('debowerify'),
+    glob = require('glob'),
+    source = require('vinyl-source-stream');
 
 
 gulp.task('build', function() {
 
-  gulp.src(['./ethic/ethic.app.coffee'], {read: false})
-
-    // Browserify, and add source maps if this isn't a production build
-    .pipe(browserify({
-      debug: true,
-      transform: [coffeeify, partialify, debowerify],
-      extensions: ['.js', '.coffee', '.html']
-    }).on('error', function(err){
+  browserify({
+    entries: ['./ethic/ethic.app.coffee'],
+    debug: true,
+    transform: [coffeeify, partialify, debowerify],
+    extensions: ['.js', '.coffee', '.html']
+  })
+    .on('error', function(err){
       console.log(err.message);
       this.end();
-    }))
+    })
+    .bundle()
 
     // Output to the build directory
-    .pipe(rename('main.js'))
+    .pipe(source('main.js'))
     .pipe(gulp.dest('./build/'));
 });
 
@@ -43,39 +44,39 @@ gulp.task('watch', function () {
 
 gulp.task('build-tests-setup', function() {
 
-  return gulp.src(['./test/setup.js'], {read: false})
-
-    // Browserify, and add source maps if this isn't a production build
-    .pipe(browserify({
-      debug: true,
-      transform: [coffeeify, debowerify],
-      extensions: ['.js', '.coffee']
-    }).on('error', function(err){
+  return browserify({
+    entries: ['./test/setup.js'],
+    debug: true,
+    transform: [coffeeify, debowerify],
+    extensions: ['.js', '.coffee']
+  })
+    .on('error', function(err){
       console.log(err.message);
       this.end();
-    }))
+    })
+    .bundle()
 
     // Output to the build directory
-    .pipe(rename('tests-setup.js'))
+    .pipe(source('tests-setup.js'))
     .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('build-tests', function() {
 
-  return gulp.src(['./test/**/*.coffee'], {read: false})
-
-    // Browserify, and add source maps if this isn't a production build
-    .pipe(browserify({
-      debug: true,
-      transform: [coffeeify, partialify, debowerify],
-      extensions: ['.js', '.coffee', '.html']
-    }).on('error', function(err){
+  return browserify({
+    entries: glob.sync('./test/**/*.coffee'),
+    debug: true,
+    transform: [coffeeify, partialify, debowerify],
+    extensions: ['.js', '.coffee', '.html']
+  })
+    .on('error', function(err){
       console.log(err.message);
       this.end();
-    }))
+    })
+    .bundle()
 
     // Output to the build directory
-    .pipe(rename('tests.js'))
+    .pipe(source('tests.js'))
     .pipe(gulp.dest('./build/'));
 });
 

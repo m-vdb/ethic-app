@@ -1,11 +1,11 @@
 Claim = require '../models/claim.coffee'
+CollectionWithMember = require './collectionWithMember.coffee'
 
 
-class ClaimCollection extends Backbone.Collection
+class ClaimCollection extends CollectionWithMember
 
   model: Claim
+  urlConfigKey: 'api.claims'
 
-  fetch: ->
-    true
 
 module.exports = ClaimCollection
