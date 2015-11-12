@@ -15,7 +15,6 @@ ClaimCollection = require './collections/claims.coffee'
 
 # models
 Member = require './models/member.coffee'
-Policy = require './models/policy.coffee'
 Claim = require './models/claim.coffee'
 
 # layouts
@@ -93,7 +92,7 @@ class App
     @app.vent.on 'routing:registerPolicy', =>
       @showMainLayout()
       @layout.showChildView 'content', new RegisterPolicyLayout
-        model: new Policy()
+        model: @member.newPolicy()
         collection: @collections.policies
 
     @app.vent.on 'routing:fileClaim', =>
