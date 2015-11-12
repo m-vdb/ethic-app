@@ -1,5 +1,9 @@
-class Claim extends Backbone.Model
+ModelWithMember = require './modelWithMember.coffee'
 
+
+class Claim extends ModelWithMember
+
+  urlConfigKey: 'api.claims'
   validation:
     amount:
       required: true
