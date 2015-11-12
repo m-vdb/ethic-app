@@ -1,9 +1,14 @@
 insuranceProviders = require '../data/insurance-providers.json'
 VinValidator = require '../utils/vin-validator.coffee'
+ModelWithMember = require './modelWithMember.coffee'
 
 vinValidator = new VinValidator()
 
-class Policy extends Backbone.Model
+class Policy extends ModelWithMember
+
+  urlConfigKey: 'api.policies'
+  defaults:
+    type: 'CarPolicy'
 
   validation:
 

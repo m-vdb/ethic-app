@@ -1,3 +1,5 @@
+Policy = require './policy.coffee'
+
 
 class Member extends Backbone.Model
 
@@ -11,6 +13,10 @@ class Member extends Backbone.Model
     password:
       required: true
       msg: 'Password is required'
+
+  newPolicy: ->
+    new Policy
+      member: @
 
 
 module.exports = Member

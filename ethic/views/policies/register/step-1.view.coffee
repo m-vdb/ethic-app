@@ -58,7 +58,7 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
 
   onSubmit: (e) ->
     e.preventDefault()
-    @triggerMethod 'step:over'
+    @triggerMethod 'step:over', true
 
 
 module.exports = Step1RegisterPolicyView
