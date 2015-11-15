@@ -1,8 +1,10 @@
 insuranceProviders = require '../data/insurance-providers.json'
 VinValidator = require '../utils/vin-validator.coffee'
 ModelWithMember = require './modelWithMember.coffee'
+config = require '../config.coffee'
 
 vinValidator = new VinValidator()
+
 
 class Policy extends ModelWithMember
 
@@ -31,6 +33,11 @@ class Policy extends ModelWithMember
       required: true
       pattern: 'number'
       min: 1
+
+  proofUrl: ->
+    config.get 'api.policiesProof',
+      id: @get('member').id
+      policyId: @id
 
 
 module.exports = Policy
