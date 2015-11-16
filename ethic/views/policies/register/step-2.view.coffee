@@ -2,6 +2,7 @@ require 'marionette'
 Dropzone = require 'dropzone'
 Dropzone.autoDiscover = false
 
+
 class Step2RegisterPolicyView extends Backbone.Marionette.ItemView
 
   template: require './step-2.view.html'
@@ -15,15 +16,24 @@ class Step2RegisterPolicyView extends Backbone.Marionette.ItemView
 
   onRender: ->
     @dropzone = new Dropzone @ui.fileUploadContainer[0],
-      url: "/file/post"  # TODO
+      url: @model.proofUrl()
       dictDefaultMessage: 'Click here to select a file or drag\'n\'drop it'
       maxFiles: 1
-      addRemoveLinks: true
       paramName: 'proofOfInsurance'
       maxFilesize: 10
       acceptedFiles: 'image/*'
+      withCredentials: true
+    @dropzone.on 'success', _.bind(@onUploadSuccess, @)
+    @dropzone.on 'error', _.bind(@onUploadError, @)
 
   showExplanation: ->
     @ui.explanation.show()
+
+  onUploadSuccess: ->
+    @triggerMethod 'step:over'
+
+  onUploadError: ->
+    # TODO:
+    console.log 'error...'
 
 module.exports = Step2RegisterPolicyView

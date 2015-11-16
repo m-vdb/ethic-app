@@ -4,6 +4,7 @@
     "authenticate": "{{ api.base }}/authenticate",
     "member": "{{ api.base }}/member",
     "policies": "{{ api.base }}/members/:id/policies",
-    "claims": "{{ api.base }}/members/:id/claims"
+    "claims": "{{ api.base }}/members/:id/claims",
+    "policiesProof": "{{ api.base }}/members/:id/policies/:policyId/proof",
   }
 }
