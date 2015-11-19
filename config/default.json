@@ -6,5 +6,6 @@
     "policies": "{{ api.base }}/members/:id/policies",
     "claims": "{{ api.base }}/members/:id/claims",
     "policiesProof": "{{ api.base }}/members/:id/policies/:policyId/proof",
+    "stripeCustomer": "{{ api.base }}/members/:id/stripe-customer"
   }
 }
