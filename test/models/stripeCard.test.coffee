@@ -62,10 +62,12 @@ describe 'StripeCard', ->
       card.saveHandler 'status',
         error: null
         id: '1337'
+        card:
+          last4: '1234'
       expect($.ajax).to.have.been.calledWithMatch
         type: 'POST'
         url: config.get('api.stripeCustomer', id: 'xxx007')
-        data: '{"stripeToken":"1337"}'
+        data: '{"stripeToken":"1337","cardLast4":"1234"}'
         contentType: "application/json"
         dataType: "json"
       deferred.resolve()
@@ -79,10 +81,12 @@ describe 'StripeCard', ->
       card.saveHandler 'status',
         error: null
         id: '1337'
+        card:
+          last4: '5678'
       expect($.ajax).to.have.been.calledWithMatch
         type: 'POST'
         url: config.get('api.stripeCustomer', id: 'xxx007')
-        data: '{"stripeToken":"1337"}'
+        data: '{"stripeToken":"1337","cardLast4":"5678"}'
         contentType: "application/json"
         dataType: "json"
       deferred.reject()

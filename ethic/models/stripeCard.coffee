@@ -43,7 +43,7 @@ class StripeCard extends ModelWithMember
       $.ajax
         type: 'POST'
         url: @url()
-        data: JSON.stringify(stripeToken: response.id)
+        data: JSON.stringify(stripeToken: response.id, cardLast4: response.card.last4)
         contentType: "application/json"
         dataType: "json"
       .done _.bind(@onSaveSuccess, @)
