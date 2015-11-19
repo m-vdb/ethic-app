@@ -6,11 +6,7 @@ describe 'StripeCard', ->
 
   beforeEach ->
     @member = new Member id: 'xxx007'
-    window.Stripe =
-      setPublishableKey: (key) ->
-        window.Stripe.key = key
-      card:
-        createToken: @sinon.spy()
+    @stubStripe()
 
   afterEach ->
     delete window.Stripe
