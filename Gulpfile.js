@@ -17,9 +17,18 @@ var fs = require('fs'),
 var ENV_FILE_TPL = '.env.tpl',
     ENV_FILE = '.env';
 
-gulp.task('build-config', function(cb) {
+function buildConfig (cb) {
   require('dotenv').load();
   fs.writeFile('./config/build.json', JSON.stringify(require('config')), cb);
+}
+
+gulp.task('build-config', function(cb) {
+  buildConfig(cb);
+});
+
+gulp.task('build-test-config', function(cb) {
+  process.env.NODE_ENV = "test";
+  buildConfig(cb);
 });
 
 gulp.task('build', function() {
@@ -118,5 +127,5 @@ gulp.task('default', function (cb) {
   runSequence('build-config', 'build', cb);
 });
 gulp.task('test', function (cb) {
-  runSequence('build-config', 'build-tests-setup', 'build-tests', 'run-tests', cb)
+  runSequence('build-test-config', 'build-tests-setup', 'build-tests', 'run-tests', cb)
 });
