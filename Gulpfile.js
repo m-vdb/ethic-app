@@ -1,15 +1,26 @@
 require('coffee-script/register');
-var gulp = require('gulp'),
-    runSequence = require('gulp-run-sequence'),
+
+var fs = require('fs'),
+    gulp = require('gulp'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
+    rename = require('gulp-rename'),
+    runSequence = require('gulp-run-sequence'),
     watch = require('gulp-watch'),
     browserify = require('browserify'),
     partialify = require('partialify'),
     coffeeify = require('coffeeify'),
     debowerify = require('debowerify'),
     glob = require('glob'),
-    source = require('vinyl-source-stream');
+    source = require('vinyl-source-stream'),
+    pathExists = require('path-exists');
 
+var ENV_FILE_TPL = '.env.tpl',
+    ENV_FILE = '.env';
+
+gulp.task('build-config', function(cb) {
+  require('dotenv').load();
+  fs.writeFile('./config/build.json', JSON.stringify(require('config')), cb);
+});
 
 gulp.task('build', function() {
 
@@ -47,7 +58,7 @@ gulp.task('build-tests-setup', function() {
   return browserify({
     entries: ['./test/setup.js'],
     debug: true,
-    transform: [coffeeify, debowerify],
+    transform: [coffeeify, partialify, debowerify],
     extensions: ['.js', '.coffee']
   })
     .on('error', function(err){
@@ -92,7 +103,20 @@ gulp.task('run-tests', function (cb) {
 });
 
 
-gulp.task('default', ['build']);
+gulp.task('postinstall', function () {
+  pathExists(ENV_FILE).then(function (exists) {
+    if (exists) return;
+
+    gulp.src(ENV_FILE_TPL)
+      .pipe(rename(ENV_FILE))
+      .pipe(gulp.dest('.'));
+  });
+});
+
+
+gulp.task('default', function (cb) {
+  runSequence('build-config', 'build', cb);
+});
 gulp.task('test', function (cb) {
-  runSequence('build-tests-setup', 'build-tests', 'run-tests', cb)
+  runSequence('build-config', 'build-tests-setup', 'build-tests', 'run-tests', cb)
 });
