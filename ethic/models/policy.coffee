@@ -39,5 +39,15 @@ class Policy extends ModelWithMember
       id: @get('member').id
       policyId: @id
 
+  _getInsuranceProviderData: ->
+    data = _.where(insuranceProviders, id: @get('insurance_provider'))
+    throw new Error('Unknown provider') unless data.length > 0
+    data[0]
+
+  getMaxDeductible: ->
+    @_getInsuranceProviderData().maxDeductible
+
+  getProviderPhone: ->
+    @_getInsuranceProviderData().phoneNumber
 
 module.exports = Policy
