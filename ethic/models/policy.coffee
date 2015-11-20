@@ -50,4 +50,8 @@ class Policy extends ModelWithMember
   getProviderPhone: ->
     @_getInsuranceProviderData().phoneNumber
 
+  getProviderName: ->
+    @_getInsuranceProviderData().name
+
+
 module.exports = Policy

@@ -34,3 +34,8 @@ describe 'PolicyModel', ->
     it 'should return the phone number of the provider', ->
       @policy.set 'insurance_provider', 'statefarm'
       expect(@policy.getProviderPhone()).to.be.equal '(415) 000-1111'
+
+  describe 'getProviderName', ->
+    it 'should return the phone number of the provider', ->
+      @policy.set 'insurance_provider', 'statefarm'
+      expect(@policy.getProviderName()).to.be.equal 'Statefarm'
