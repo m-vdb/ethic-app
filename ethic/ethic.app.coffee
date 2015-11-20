@@ -1,4 +1,5 @@
 window.$ = window.jQuery = require 'jquery'
+require 'bootstrap'  # TODO: include minimal version
 window._ = require 'underscore'
 window.Backbone = require 'backbone'
 require 'marionette'
