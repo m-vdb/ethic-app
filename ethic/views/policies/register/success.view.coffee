@@ -14,7 +14,7 @@ class RegisterPolicySuccessView extends Backbone.Marionette.ItemView
     }
 
   onShow: ->
-    content = @model.get('insurance_provider') + ': ' + @model.getProviderPhone()
+    content = @model.getProviderName() + ': ' + @model.getProviderPhone()
     @ui.callCarrier.popover
       title: 'Call your provider'
       content: content
