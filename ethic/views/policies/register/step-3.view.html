@@ -1,7 +1,34 @@
 <div>
   <div class="row">
     <div class="col-md-offset-3 col-md-6 text-center">
-      STEP 3
+      <form class="payment-form form-horizontal">
+
+        <div class="form-group">
+          <label for="stripe-number" class="col-sm-3 control-label">Card Number</label>
+          <div class="col-sm-6">
+            <input class="form-control" id="stripe-number" type="text" size="20" data-stripe="number"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="stripe-cvc" class="col-sm-3 control-label">CVC</label>
+          <div class="col-sm-6">
+            <input class="form-control" id="stripe-cvc" type="text" size="4" data-stripe="cvc"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="stripe-exp" class="col-sm-3 control-label">Expiration (MM/YYYY)</label>
+          <div class="col-sm-6">
+            <input class="form-control" id="stripe-exp" type="text" size="7" data-stripe="exp"/>
+          </div>
+        </div>
+        <div class="form-error-container text-danger">
+          <ul class="form-error-list"></ul>
+        </div>
+
+        <button class="btn btn-primary btn-submit" disabled="disabled">Submit card</button>
+      </form>
     </div>
   </div>
 </div>

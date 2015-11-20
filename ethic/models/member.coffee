@@ -1,4 +1,5 @@
 Policy = require './policy.coffee'
+StripeCard = require './stripeCard.coffee'
 
 
 class Member extends Backbone.Model
@@ -16,6 +17,10 @@ class Member extends Backbone.Model
 
   newPolicy: ->
     new Policy
+      member: @
+
+  newStripeCard: ->
+    new StripeCard
       member: @
 
 

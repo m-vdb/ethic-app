@@ -1,0 +1,5 @@
+{
+  "stripe": {
+    "publicKey": "STRIPE_PUBLIC_KEY"
+  }
+}

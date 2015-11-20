@@ -1,0 +1,5 @@
+{
+  "stripe": {
+    "publicKey": "dummy_api_key"
+  }
+}
