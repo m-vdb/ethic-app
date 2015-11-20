@@ -1,9 +1,9 @@
 require 'marionette'
 
 
-class Step3RegisterPolicyView extends Backbone.Marionette.ItemView
+class RegisterPolicyPaymentView extends Backbone.Marionette.ItemView
 
-  template: require './step-3.view.html'
+  template: require './payment.view.html'
 
   ui:
     number: '[data-stripe=number]'
@@ -63,4 +63,5 @@ class Step3RegisterPolicyView extends Backbone.Marionette.ItemView
   onError: (error = "An error occurred, please try a again.") ->
     @ui.errorList.append "<li class='error-server'>#{ error }</li>"
 
-module.exports = Step3RegisterPolicyView
+
+module.exports = RegisterPolicyPaymentView

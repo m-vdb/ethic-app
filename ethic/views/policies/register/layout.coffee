@@ -2,16 +2,16 @@ require 'marionette'
 ProgressView = require './progress.view.coffee'
 
 steps = [
-  require './step-0.view.coffee'
-  require './step-1.view.coffee'
-  require './step-2.view.coffee'
-  require './step-3.view.coffee'
-  require './step-4.view.coffee'
+  require './greetings.view.coffee'
+  require './form.view.coffee'
+  require './proof.view.coffee'
+  require './payment.view.coffee'
+  require './success.view.coffee'
 ]
 
-class RegisterStepLayout extends Backbone.Marionette.LayoutView
+class RegisterLayout extends Backbone.Marionette.LayoutView
 
-  template: require './step.layout.html'
+  template: require './layout.html'
 
   regions:
     progress: ".register-policy-progress"
@@ -42,11 +42,9 @@ class RegisterStepLayout extends Backbone.Marionette.LayoutView
 
   doNextStep: ->
     @currentStepIdx++
-    if @currentStepIdx >= steps.length
-      # TODO: we're done
-    else
+    if @currentStepIdx < steps.length
       StepView = steps[@currentStepIdx]
       @showChildView 'content', new StepView
         model: @model
 
-module.exports = RegisterStepLayout
+module.exports = RegisterLayout

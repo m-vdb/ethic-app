@@ -1,10 +1,10 @@
 require 'marionette'
-formInlines = require './step1-form-inlines/inlines.coffee'
+formInlines = require './form-inlines/inlines.coffee'
 
 
-class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
+class RegisterPolicyFormView extends Backbone.Marionette.CompositeView
 
-  template: require './step-1.view.html'
+  template: require './form.view.html'
   ui:
     errorList: '.form-error-list'
     submitContainer: '.js-submit-container'
@@ -61,4 +61,4 @@ class Step1RegisterPolicyView extends Backbone.Marionette.CompositeView
     @triggerMethod 'step:over', true
 
 
-module.exports = Step1RegisterPolicyView
+module.exports = RegisterPolicyFormView

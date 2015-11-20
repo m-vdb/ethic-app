@@ -1,15 +1,13 @@
 [
-  {"id": "esurance", "name": "Esurance"},
-  {"id": "statefarm", "name": "Statefarm"},
-  {"id": "aaa", "name": "AAA"},
-  {"id": "farmers", "name": "Farmers"},
-  {"id": "Mercurey", "name": "Mercurey"},
-  {"id": "midcentury", "name": "Midcentury"},
-  {"id": "access", "name": "Access Insurance"},
-  {"id": "21st_century", "name": "21st Century"},
-  {"id": "progressive", "name": "Progressive"},
-  {"id": "geico", "name": "Geico"},
-  {"id": "insurance", "name": "insurance"},
-  {"id": "safeco", "name": "Safeco"},
-  {"id": "hartford", "name": "The Hartford"}
+  {"id": "esurance", "name": "Esurance", "maxDeductible": 1000, "phoneNumber": "(415) 000-1111"},
+  {"id": "statefarm", "name": "Statefarm", "maxDeductible": 2000, "phoneNumber": "(415) 000-1111"},
+  {"id": "aaa", "name": "AAA", "maxDeductible": 1000, "phoneNumber": "(415) 000-1111"},
+  {"id": "farmers", "name": "Farmers", "maxDeductible": 2500, "phoneNumber": "(415) 000-1111"},
+  {"id": "mercury", "name": "Mercury", "maxDeductible": 2500, "phoneNumber": "(415) 000-1111"},
+  {"id": "access", "name": "Access Insurance", "maxDeductible": 0, "phoneNumber": "(415) 000-1111"},
+  {"id": "21st_century", "name": "21st Century", "maxDeductible": 1000, "phoneNumber": "(415) 000-1111"},
+  {"id": "progressive", "name": "Progressive", "maxDeductible": 2500, "phoneNumber": "(415) 000-1111"},
+  {"id": "geico", "name": "Geico", "maxDeductible": 2500, "phoneNumber": "(415) 000-1111"},
+  {"id": "safeco", "name": "Safeco", "maxDeductible": 2500, "phoneNumber": "(415) 000-1111"},
+  {"id": "hartford", "name": "The Hartford", "maxDeductible": 0, "phoneNumber": "(415) 000-1111"}
 ]
