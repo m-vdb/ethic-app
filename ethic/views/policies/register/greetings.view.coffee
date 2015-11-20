@@ -1,9 +1,9 @@
 require 'marionette'
 
 
-class Step0RegisterPolicyView extends Backbone.Marionette.ItemView
+class RegisterPolicyGreetingsView extends Backbone.Marionette.ItemView
 
-  template: require './step-0.view.html'
+  template: require './greetings.view.html'
   className: 'register-policy-step-0'
 
   ui:
@@ -21,4 +21,5 @@ class Step0RegisterPolicyView extends Backbone.Marionette.ItemView
   onStartRegister: ->
     @triggerMethod 'step:over'
 
-module.exports = Step0RegisterPolicyView
+
+module.exports = RegisterPolicyGreetingsView

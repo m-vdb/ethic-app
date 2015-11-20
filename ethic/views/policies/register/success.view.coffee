@@ -1,9 +1,9 @@
 require 'marionette'
 
 
-class Step4RegisterPolicyView extends Backbone.Marionette.ItemView
+class RegisterPolicySuccessView extends Backbone.Marionette.ItemView
 
-  template: _.template(require './step-4.view.html')
+  template: _.template(require './success.view.html')
   ui:
     callCarrier: '.text-call-carrier'
 
@@ -22,4 +22,4 @@ class Step4RegisterPolicyView extends Backbone.Marionette.ItemView
       trigger: 'hover'
 
 
-module.exports = Step4RegisterPolicyView
+module.exports = RegisterPolicySuccessView

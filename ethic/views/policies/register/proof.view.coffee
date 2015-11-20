@@ -3,9 +3,9 @@ Dropzone = require 'dropzone'
 Dropzone.autoDiscover = false
 
 
-class Step2RegisterPolicyView extends Backbone.Marionette.ItemView
+class RegisterPolicyProofView extends Backbone.Marionette.ItemView
 
-  template: require './step-2.view.html'
+  template: require './proof.view.html'
   ui:
     fileUploadContainer: '.js-file-upload-container'
     explanationLink: '.js-explanation-link'
@@ -36,4 +36,5 @@ class Step2RegisterPolicyView extends Backbone.Marionette.ItemView
     # TODO:
     console.log 'error...'
 
-module.exports = Step2RegisterPolicyView
+
+module.exports = RegisterPolicyProofView
