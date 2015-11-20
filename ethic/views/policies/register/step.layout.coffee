@@ -42,9 +42,7 @@ class RegisterStepLayout extends Backbone.Marionette.LayoutView
 
   doNextStep: ->
     @currentStepIdx++
-    if @currentStepIdx >= steps.length
-      # TODO: we're done
-    else
+    if @currentStepIdx < steps.length
       StepView = steps[@currentStepIdx]
       @showChildView 'content', new StepView
         model: @model
