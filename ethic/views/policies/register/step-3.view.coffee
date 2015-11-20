@@ -60,8 +60,7 @@ class Step3RegisterPolicyView extends Backbone.Marionette.ItemView
   onSuccess: ->
     @triggerMethod 'step:over'
 
-  onError: ->
-    # TODO
-    console.log 'error'
+  onError: (error = "An error occurred, please try a again.") ->
+    @ui.errorList.append "<li class='error-server'>#{ error }</li>"
 
 module.exports = Step3RegisterPolicyView
