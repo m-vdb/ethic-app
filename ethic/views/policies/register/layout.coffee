@@ -25,8 +25,10 @@ class RegisterLayout extends Backbone.Marionette.LayoutView
     @FirstStepView = steps[@currentStepIdx]
 
   onShow: ->
-    @showChildView 'progress', new ProgressView
+    @progressView = new ProgressView
       model: @model
+      start: @currentStepIdx
+    @showChildView 'progress', @progressView
     @showChildView 'content', new @FirstStepView
       model: @model
 
@@ -46,5 +48,10 @@ class RegisterLayout extends Backbone.Marionette.LayoutView
       StepView = steps[@currentStepIdx]
       @showChildView 'content', new StepView
         model: @model
+      if @currentStepIdx == steps.length - 1
+        @progressView.toggle true
+      else
+        @progressView.nextStep()
+
 
 module.exports = RegisterLayout
