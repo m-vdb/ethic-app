@@ -21,3 +21,12 @@ html, body, #ethic-app {
 .inline-block {
   display: inline-block;
 }
+
+.progress-step {
+  display: inline-block;
+  padding: 20px;
+}
+
+.progress-step.active {
+  color: #1e88c9;
+}
