@@ -12,7 +12,7 @@ class ProgressView extends Backbone.Marionette.ItemView
     hideOrShow = if @options.start == 0 then ' hide' else ''
     'register-progress-bar text-center' + hideOrShow
 
-  nextStep: () ->
+  nextStep: ->
     @idx++
     @toggle false
     @$("[data-step=#{ @idx }]").addClass 'active'
