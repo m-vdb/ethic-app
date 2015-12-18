@@ -1,6 +1,7 @@
-Form = require '../form.coffee'
+require 'marionette'
 
-class FileClaimView extends Form
+
+class FileClaimView extends Backbone.Marionette.ItemView
 
   template: _.template(require './file.view.html')
 

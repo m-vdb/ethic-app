@@ -1,14 +1,14 @@
 <div>
   <h1>File a claim</h1>
   <div class="row">
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-offset-1 col-md-10">
       <% if (policies.length > 0) { %>
       <form class="form form-horizontal">
         <div class="form-group">
-          <label for="policy-id" class="col-sm-4">Policy</label>
+          <label for="policy" class="col-sm-6">1. You want to file a claim for</label>
           <div class="col-sm-6">
-            <select id="policy-id" class="form-control" name="policy_id">
-              <option val="">Choose a policy</option>
+            <select id="policy" class="form-control" name="policy">
+              <option val="">Select a policy</option>
               <% _.each(policies, function (policy) { %>
               <option val="<%=policy%>"><%=policy%></option>
               <% }) %>
@@ -17,20 +17,63 @@
           <p class="form-error-msg text-danger"></p>
         </div>
         <div class="form-group">
-          <label for="amount" class="col-sm-4">Amount</label>
-          <div class="col-sm-4">
+          <label for="description" class="col-sm-6">2. Tell us what happened</label>
+          <div class="col-sm-6">
+            <textarea id="description" class="form-control" name="description" rows="8"></textarea>
+            <p>TODO: attach police report</p>
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="date" class="col-sm-6">3. When did it happened?</label>
+          <div class="col-sm-6">
+            <input type="date" id="date" class="form-control" name="date">
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="location" class="col-sm-6">4. Where did the event occur?</label>
+          <div class="col-sm-6">
+            <input type="text" id="location" class="form-control" name="location">
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="driversCount" class="col-sm-6">5. How many drivers where involved?</label>
+          <div class="col-sm-6">
+            <input type="text" id="driversCount" class="form-control" name="driversCount">
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="atFault" class="col-sm-6">6. Are you at fault?</label>
+          <div class="col-sm-6">
+            <input type="checkbox" id="atFault" class="form-control" name="atFault">
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="wentToGarage" class="col-sm-6">7. Have you been to a garage yet?</label>
+          <div class="col-sm-6">
+            <input type="checkbox" id="wentToGarage" class="form-control" name="wentToGarage">
+          </div>
+          <p class="form-error-msg text-danger"></p>
+        </div>
+        <div class="form-group">
+          <label for="estimate" class="col-sm-6">8. What is the estimate of the reparations?</label>
+          <div class="col-sm-6">
             <div class="input-group">
-              <input type="number" id="amount" class="form-control" name="amount" placeholder="250.35">
+              <input type="number" id="estimate" class="form-control" name="estimate" placeholder="250.35">
               <div class="input-group-addon">$</div>
+              <p>TODO: attach estimate</p>
             </div>
           </div>
           <p class="form-error-msg text-danger"></p>
         </div>
         <div class="form-group">
-          <label for="reason" class="col-sm-4">Reason</label>
-          <div class="col-sm-6">
-            <textarea id="reason" class="form-control" name="reason" rows="8">Please explain the reason of your claim (minimum 100 characters).
-            </textarea>
+          <label for="wentToGarage" class="col-sm-4">9. Upload a few pictures</label>
+          <div class="col-sm-4">
+            <p>TODO</p>
           </div>
           <p class="form-error-msg text-danger"></p>
         </div>
