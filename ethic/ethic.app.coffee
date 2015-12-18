@@ -100,7 +100,7 @@ class App
       @showMainLayout()
       # TODO: relies on polcicy collection content
       @layout.showChildView 'content', new FileClaimView
-        model: new Claim()
+        model: new Claim member: @member
         collection: @collections.claims
         policiesCollection: @collections.policies
 
